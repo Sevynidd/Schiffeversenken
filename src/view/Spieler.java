@@ -7,12 +7,16 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.Getter_Setter;
+import controller.Listener_Spieler;
+
 public class Spieler {
 
-	protected JFrame frame_spieler;
+	public JFrame frame_spieler;
 
 	private String[] buchstaben = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 	private int[] zahlen = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -20,13 +24,7 @@ public class Spieler {
 																								// JTextFields
 	private JTextField textField_A_bis_J[];
 	private JTextField textField_0_bis_9[];
-																								// JButtons
-	protected JButton button_A0_bis_J9[][];
-																								// JTextFields Anzahl Schiffe
-	private JTextField textField_Anzahl_Schlachtschiff;
-	private JTextField textField_Anzahl_Kreuzer;
-	private JTextField textField_Anzahl_Zerstörer;
-	private JTextField textField_Anzahl_UBoot;
+	
 																								//	JTextFields Namen Schiffe
 	private JTextField txtSchlachtschiff;
 	private JTextField txtKreuzer;
@@ -55,6 +53,7 @@ public class Spieler {
 		text_Anzahl_Schiffe();
 		text_Schiffe();
 		buttons_Auswahl_Schiffe();
+		hinweis_textfeld();
 		
 
 	}
@@ -107,10 +106,96 @@ public class Spieler {
 
 	}
 
-																								// JButtons A0-J9
-	public void button_erstellen_A0_bis_J9() {
+	private void buttons_Auswahl_Schiffe() {
+			
+																								//JRadioButton Schlachtschiff
+		JRadioButton RadioButton_Schlachtschiff = new JRadioButton("");
+		RadioButton_Schlachtschiff.setActionCommand("Schlachtschiff");
+		RadioButton_Schlachtschiff.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_Schlachtschiff.setBounds(721, 150, 25, 25);
+		frame_spieler.getContentPane().add(RadioButton_Schlachtschiff);
+		
+		Getter_Setter.setRadioButton_Schiffe(RadioButton_Schlachtschiff, 0);
+	
+																								//JRadioButton Kreuzer
+		JRadioButton RadioButton_Kreuzer = new JRadioButton("");
+		RadioButton_Kreuzer.setActionCommand("Kreuzer");
+		RadioButton_Kreuzer.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_Kreuzer.setBounds(721, 185, 25, 25);
+		frame_spieler.getContentPane().add(RadioButton_Kreuzer);
+		
+		Getter_Setter.setRadioButton_Schiffe(RadioButton_Kreuzer, 1);
+		
+																								//JRadioButton Zerstörer
+		JRadioButton RadioButton_Zerstörer = new JRadioButton("");
+		RadioButton_Zerstörer.setActionCommand("Zerst\u00F6rer");
+		RadioButton_Zerstörer.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_Zerstörer.setBounds(721, 220, 25, 25);
+		frame_spieler.getContentPane().add(RadioButton_Zerstörer);
+		
+		Getter_Setter.setRadioButton_Schiffe(RadioButton_Zerstörer, 2);
+		
+																								//JRadioButton U-Boot
+		JRadioButton RadioButton_UBoot = new JRadioButton("");
+		RadioButton_UBoot.setActionCommand("UBoot");
+		RadioButton_UBoot.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_UBoot.setBounds(721, 255, 25, 25);
+		frame_spieler.getContentPane().add(RadioButton_UBoot);
+		
+		Getter_Setter.setRadioButton_Schiffe(RadioButton_UBoot, 3);
+	
+		
+		ButtonGroup gruppe_schiffe = new ButtonGroup();
+		gruppe_schiffe.add(RadioButton_Schlachtschiff);
+		gruppe_schiffe.add(RadioButton_Kreuzer);
+		gruppe_schiffe.add(RadioButton_Zerstörer);
+		gruppe_schiffe.add(RadioButton_UBoot);
+		
+		Getter_Setter.setGruppe_schiffe(gruppe_schiffe);
+		
+		Getter_Setter.getRadioButton_Schiffe()[0].setSelected(true);
+	
+	}
 
-		button_A0_bis_J9 = new JButton[10][10];
+
+																								// JButtons A0-J9
+	private void erstellen_radioButtons() {
+	
+																								// JRadioButton Horizontal
+		JRadioButton RadioButton_Horizontal = new JRadioButton("Horizontal");
+		RadioButton_Horizontal.setActionCommand("Horizontal");
+		RadioButton_Horizontal.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_Horizontal.setBounds(525, 6, 90, 20);
+		frame_spieler.getContentPane().add(RadioButton_Horizontal);
+		
+		Getter_Setter.setRadioButton_Horizontal_Vertikal(RadioButton_Horizontal, 0);
+	
+																								// JRadioButton Vertikal
+		JRadioButton RadioButton_Vertikal = new JRadioButton("Vertikal");
+		RadioButton_Vertikal.setActionCommand("Vertikal");
+		RadioButton_Vertikal.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_Vertikal.setBounds(625, 6, 90, 20);
+		frame_spieler.getContentPane().add(RadioButton_Vertikal);
+		
+		Getter_Setter.setRadioButton_Horizontal_Vertikal(RadioButton_Vertikal, 1);
+	
+		// Damit die RadioButtons automatisch abgewählt werden, wenn ein anderer gewählt ist
+		
+		ButtonGroup gruppe_hor_vert = new ButtonGroup();
+		gruppe_hor_vert.add(RadioButton_Horizontal);
+		gruppe_hor_vert.add(RadioButton_Vertikal);
+		
+		Getter_Setter.setGruppe_hor_vert(gruppe_hor_vert);
+	    
+		RadioButton_Horizontal.setSelected(true);
+		//System.out.println(gruppe_hor_vert.getSelection().getActionCommand());
+		
+	}
+
+
+	private void button_erstellen_A0_bis_J9() {
+
+		JButton[][] button_A0_bis_J9 = new JButton[10][10];
 
 		// z = Zahlen
 		for (int z = 1; z <= 10; z++) {
@@ -123,37 +208,26 @@ public class Spieler {
 				button_A0_bis_J9[b - 1][z - 1].setText("");
 				button_A0_bis_J9[b - 1][z - 1].setFont(new Font("Tahoma", Font.PLAIN, 16));
 				button_A0_bis_J9[b - 1][z - 1].setBackground(new Color(222,222,222));
+				button_A0_bis_J9[b - 1][z - 1].setActionCommand(Integer.toString(b-1) + " " + Integer.toString(z-1));
 				frame_spieler.getContentPane().add(button_A0_bis_J9[b - 1][z - 1]);
+				
+				Getter_Setter.setButton_A0_bis_J9(button_A0_bis_J9[b - 1][z - 1], b-1, z-1);
+				
+				Listener_Spieler.buttonListener(button_A0_bis_J9[b-1][z-1]);
+				
 
 			}
 		}
 
 	}
 
-	public void erstellen_radioButtons() {
-
-																								// JRadioButton Horizontal
-		JRadioButton RadioButton_Horizontal = new JRadioButton("Horizontal");
-		RadioButton_Horizontal.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_Horizontal.setBounds(525, 6, 90, 20);
-		frame_spieler.getContentPane().add(RadioButton_Horizontal);
-
-																								// JRadioButton Vertikal
-		JRadioButton RadioButton_Vertikal = new JRadioButton("Vertikal");
-		RadioButton_Vertikal.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_Vertikal.setBounds(625, 6, 90, 20);
-		frame_spieler.getContentPane().add(RadioButton_Vertikal);
-
-		// Damit die RadioButtons automatisch abgewählt werden, wenn ein anderer gewählt ist
+	private void text_Anzahl_Schiffe() {
 		
-		ButtonGroup gruppe_hor_vert = new ButtonGroup();
-		gruppe_hor_vert.add(RadioButton_Horizontal);
-		gruppe_hor_vert.add(RadioButton_Vertikal);
-	    
-	    
-	}
-	
-	public void text_Anzahl_Schiffe() {
+		JTextField textField_Anzahl_Schlachtschiff;
+		JTextField textField_Anzahl_Kreuzer;
+		JTextField textField_Anzahl_Zerstörer;
+		JTextField textField_Anzahl_UBoot;
+		
 																								//JTextField Schlachtschiff
 		textField_Anzahl_Schlachtschiff = new JTextField();
 		textField_Anzahl_Schlachtschiff.setEditable(false);
@@ -162,7 +236,9 @@ public class Spieler {
 		textField_Anzahl_Schlachtschiff.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textField_Anzahl_Schlachtschiff.setBounds(525, 150, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_Schlachtschiff);
-	    textField_Anzahl_Schlachtschiff.setColumns(10);
+	    
+	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_Schlachtschiff, 0);
+	    
 	    																						//JTextField Kreuzer
 	    textField_Anzahl_Kreuzer = new JTextField();
 	    textField_Anzahl_Kreuzer.setEditable(false);
@@ -172,6 +248,9 @@ public class Spieler {
 	    textField_Anzahl_Kreuzer.setColumns(10);
 	    textField_Anzahl_Kreuzer.setBounds(525, 185, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_Kreuzer);
+	    
+	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_Kreuzer, 1);
+	    
 	    																						//JTextField Zerstörer
 	    textField_Anzahl_Zerstörer = new JTextField();
 	    textField_Anzahl_Zerstörer.setEditable(false);
@@ -181,6 +260,9 @@ public class Spieler {
 	    textField_Anzahl_Zerstörer.setColumns(10);
 	    textField_Anzahl_Zerstörer.setBounds(525, 220, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_Zerstörer);
+	    
+	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_Zerstörer, 2);
+	    
 	    																						//JTextField UBoot
 	    textField_Anzahl_UBoot = new JTextField();
 	    textField_Anzahl_UBoot.setEditable(false);
@@ -190,6 +272,8 @@ public class Spieler {
 	    textField_Anzahl_UBoot.setColumns(10);
 	    textField_Anzahl_UBoot.setBounds(525, 255, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_UBoot);
+	    
+	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_UBoot, 3);
 
 	}
 	
@@ -234,37 +318,20 @@ public class Spieler {
 
 	}
 	
-	public void buttons_Auswahl_Schiffe() {
-																								//JRadioButton Schlachtschiff
-		JRadioButton RadioButton_Schlachtschiff = new JRadioButton("");
-		RadioButton_Schlachtschiff.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_Schlachtschiff.setBounds(721, 150, 25, 25);
-		frame_spieler.getContentPane().add(RadioButton_Schlachtschiff);
-
-																								//JRadioButton Kreuzer
-		JRadioButton RadioButton_Kreuzer = new JRadioButton("");
-		RadioButton_Kreuzer.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_Kreuzer.setBounds(721, 185, 25, 25);
-		frame_spieler.getContentPane().add(RadioButton_Kreuzer);
+	private void hinweis_textfeld() {
+																								//JTextArea Hinweis
+		JTextArea textArea_hinweis = new JTextArea();
+		textArea_hinweis.setWrapStyleWord(true);
+		textArea_hinweis.setLineWrap(true);
+		textArea_hinweis.setBounds(474, 410, 300, 40);
+		textArea_hinweis.setEditable(false);
+		textArea_hinweis.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textArea_hinweis.setBackground(new Color(222,222,222));
+		frame_spieler.getContentPane().add(textArea_hinweis);
 		
-																								//JRadioButton Zerstörer
-		JRadioButton RadioButton_Zerstörer = new JRadioButton("");
-		RadioButton_Zerstörer.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_Zerstörer.setBounds(721, 220, 25, 25);
-		frame_spieler.getContentPane().add(RadioButton_Zerstörer);
+		Getter_Setter.setTextField_hinweis(textArea_hinweis);
+		Getter_Setter.getTextField_hinweis().setText("Hier werden Hinweise stehen wenn ein Fehler auftritt");
 		
-																								//JRadioButton U-Boot
-		JRadioButton RadioButton_UBoot = new JRadioButton("");
-		RadioButton_UBoot.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_UBoot.setBounds(721, 255, 25, 25);
-		frame_spieler.getContentPane().add(RadioButton_UBoot);
-
 		
-		ButtonGroup gruppe_schiffe = new ButtonGroup();
-		gruppe_schiffe.add(RadioButton_Schlachtschiff);
-		gruppe_schiffe.add(RadioButton_Kreuzer);
-		gruppe_schiffe.add(RadioButton_Zerstörer);
-		gruppe_schiffe.add(RadioButton_UBoot);
-	
 	}
 }
