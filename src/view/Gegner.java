@@ -58,7 +58,7 @@ public class Gegner {
 			textField_A_bis_J[i-1].setFont(new Font("Tahoma", Font.PLAIN, 18));
 			textField_A_bis_J[i-1].setHorizontalAlignment(SwingConstants.CENTER);
 			textField_A_bis_J[i-1].setText(buchstabe);
-			textField_A_bis_J[i-1].setBackground(Color.LIGHT_GRAY);
+			textField_A_bis_J[i-1].setBackground(new Color(222,222,222));
 			textField_A_bis_J[i-1].setEditable(false);
 
 			frame_gegner.getContentPane().add(textField_A_bis_J[i-1]);
@@ -81,7 +81,7 @@ public class Gegner {
 			textField_0_bis_9[i-1].setFont(new Font("Tahoma", Font.PLAIN, 18));
 			textField_0_bis_9[i-1].setHorizontalAlignment(SwingConstants.CENTER);
 			textField_0_bis_9[i-1].setText(zahl);
-			textField_0_bis_9[i-1].setBackground(Color.LIGHT_GRAY);
+			textField_0_bis_9[i-1].setBackground(new Color(222,222,222));
 			textField_0_bis_9[i-1].setEditable(false);
 
 			frame_gegner.getContentPane().add(textField_0_bis_9[i-1]);
@@ -106,7 +106,7 @@ public class Gegner {
 				button_A0_bis_J9[b-1][z-1].setBounds(b*40, z*40, 40, 40);
 				button_A0_bis_J9[b-1][z-1].setText("");
 				button_A0_bis_J9[b-1][z-1].setFont(new Font("Tahoma", Font.PLAIN, 16));
-				button_A0_bis_J9[b-1][z-1].setBackground(Color.LIGHT_GRAY);
+				button_A0_bis_J9[b-1][z-1].setBackground(new Color(222,222,222));
 				frame_gegner.getContentPane().add(button_A0_bis_J9[b-1][z-1]);
 				
 				
