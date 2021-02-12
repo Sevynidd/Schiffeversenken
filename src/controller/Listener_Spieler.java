@@ -16,21 +16,28 @@ public class Listener_Spieler {
 		button_ausgewählt.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent cursor) {
+				
+				// Hinweistext zurücksetzen und auf die normale Farbe
 
 				Getter_Setter.getTextField_hinweis().setText(hinweis_text);
 				Getter_Setter.getTextField_hinweis().setBackground(new Color(222, 222, 222));
 
+				// Die Daten die durch den Button gereicht werden aufteilen
 				int buchstabe = Integer.parseInt(button_ausgewählt.getActionCommand().split(" ")[0]);
 				int zahl = Integer.parseInt(button_ausgewählt.getActionCommand().split(" ")[1]);
 
+				
+				// Welcher ist aktiv? Horizontal oder Vertikal
 				switch (Getter_Setter.getGruppe_hor_vert().getSelection().getActionCommand()) {
 
 				case "Horizontal":
-
+					
+					// Welcher von den 4 Schiffsbuttons ist aktiv?
 					switch (Getter_Setter.getGruppe_schiffe().getSelection().getActionCommand()) {
 
 					case "Schlachtschiff":
-
+						
+						//Länge vom Schiff
 						for (int i = buchstabe; i <= (buchstabe + 4); i++) {
 
 							// Wenn es mehr als ein Schiff gibt
@@ -42,11 +49,18 @@ public class Listener_Spieler {
 									Getter_Setter.getButton_A0_bis_J9(i, zahl).setText("X");
 
 									// Rand außendrum Rötlich färben
+									// farbe_komplett geht am schiff entlang (wie for-Schleife i)
 									for (int farbe_komplett = buchstabe - 1; farbe_komplett <= (buchstabe
 											+ 5); farbe_komplett++) {
 
+										// farbe_zahl geht durch die Reihen
 										for (int farbe_zahl = zahl + 1; farbe_zahl >= (zahl - 1); farbe_zahl--) {
 
+											/*
+											 * for-Schleife m visiert immer nur einen bestimmten Button an
+											 * Wenn ein Fehler auftritt (IndexOutOfBounds), dann wird dieser
+											 * eine Button übersprungen
+											 */
 											for (int m = 0; m <= 1; m++) {
 
 												try {
@@ -79,7 +93,12 @@ public class Listener_Spieler {
 									Getter_Setter.getTextField_hinweis().setBackground(Color.decode("#f08080"));
 									break;
 								}
-
+								
+								
+								/*
+								 *  Wenn das letzte X platziert wird, dann wird die Anzahl der zu
+								 *  platzierenden Schiffe um eins reduziert
+								 */
 								if (i == buchstabe + 4) {
 
 									// Den Text setzen zu dem Text von vorher minus 1
