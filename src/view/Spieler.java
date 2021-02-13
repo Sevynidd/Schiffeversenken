@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controller.Getter_Setter;
+import controller.Getter_Setter_Spieler;
 import controller.Listener_Spieler;
 
 public class Spieler {
@@ -115,7 +115,7 @@ public class Spieler {
 		RadioButton_Schlachtschiff.setBounds(721, 150, 25, 25);
 		frame_spieler.getContentPane().add(RadioButton_Schlachtschiff);
 		
-		Getter_Setter.setRadioButton_Schiffe(RadioButton_Schlachtschiff, 0);
+		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Schlachtschiff, 0);
 	
 																								//JRadioButton Kreuzer
 		JRadioButton RadioButton_Kreuzer = new JRadioButton("");
@@ -124,7 +124,7 @@ public class Spieler {
 		RadioButton_Kreuzer.setBounds(721, 185, 25, 25);
 		frame_spieler.getContentPane().add(RadioButton_Kreuzer);
 		
-		Getter_Setter.setRadioButton_Schiffe(RadioButton_Kreuzer, 1);
+		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Kreuzer, 1);
 		
 																								//JRadioButton Zerstörer
 		JRadioButton RadioButton_Zerstörer = new JRadioButton("");
@@ -133,7 +133,7 @@ public class Spieler {
 		RadioButton_Zerstörer.setBounds(721, 220, 25, 25);
 		frame_spieler.getContentPane().add(RadioButton_Zerstörer);
 		
-		Getter_Setter.setRadioButton_Schiffe(RadioButton_Zerstörer, 2);
+		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Zerstörer, 2);
 		
 																								//JRadioButton U-Boot
 		JRadioButton RadioButton_UBoot = new JRadioButton("");
@@ -142,7 +142,7 @@ public class Spieler {
 		RadioButton_UBoot.setBounds(721, 255, 25, 25);
 		frame_spieler.getContentPane().add(RadioButton_UBoot);
 		
-		Getter_Setter.setRadioButton_Schiffe(RadioButton_UBoot, 3);
+		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_UBoot, 3);
 	
 		
 		ButtonGroup gruppe_schiffe = new ButtonGroup();
@@ -151,9 +151,9 @@ public class Spieler {
 		gruppe_schiffe.add(RadioButton_Zerstörer);
 		gruppe_schiffe.add(RadioButton_UBoot);
 		
-		Getter_Setter.setGruppe_schiffe(gruppe_schiffe);
+		Getter_Setter_Spieler.setGruppe_schiffe(gruppe_schiffe);
 		
-		Getter_Setter.getRadioButton_Schiffe()[0].setSelected(true);
+		Getter_Setter_Spieler.getRadioButton_Schiffe()[0].setSelected(true);
 	
 	}
 
@@ -168,7 +168,7 @@ public class Spieler {
 		RadioButton_Horizontal.setBounds(525, 6, 90, 20);
 		frame_spieler.getContentPane().add(RadioButton_Horizontal);
 		
-		Getter_Setter.setRadioButton_Horizontal_Vertikal(RadioButton_Horizontal, 0);
+		Getter_Setter_Spieler.setRadioButton_Horizontal_Vertikal(RadioButton_Horizontal, 0);
 	
 																								// JRadioButton Vertikal
 		JRadioButton RadioButton_Vertikal = new JRadioButton("Vertikal");
@@ -177,7 +177,7 @@ public class Spieler {
 		RadioButton_Vertikal.setBounds(625, 6, 90, 20);
 		frame_spieler.getContentPane().add(RadioButton_Vertikal);
 		
-		Getter_Setter.setRadioButton_Horizontal_Vertikal(RadioButton_Vertikal, 1);
+		Getter_Setter_Spieler.setRadioButton_Horizontal_Vertikal(RadioButton_Vertikal, 1);
 	
 		// Damit die RadioButtons automatisch abgewählt werden, wenn ein anderer gewählt ist
 		
@@ -185,7 +185,7 @@ public class Spieler {
 		gruppe_hor_vert.add(RadioButton_Horizontal);
 		gruppe_hor_vert.add(RadioButton_Vertikal);
 		
-		Getter_Setter.setGruppe_hor_vert(gruppe_hor_vert);
+		Getter_Setter_Spieler.setGruppe_hor_vert(gruppe_hor_vert);
 	    
 		RadioButton_Horizontal.setSelected(true);
 		//System.out.println(gruppe_hor_vert.getSelection().getActionCommand());
@@ -211,7 +211,7 @@ public class Spieler {
 				button_A0_bis_J9[b - 1][z - 1].setActionCommand(Integer.toString(b-1) + " " + Integer.toString(z-1));
 				frame_spieler.getContentPane().add(button_A0_bis_J9[b - 1][z - 1]);
 				
-				Getter_Setter.setButton_A0_bis_J9(button_A0_bis_J9[b - 1][z - 1], b-1, z-1);
+				Getter_Setter_Spieler.setButton_A0_bis_J9(button_A0_bis_J9[b - 1][z - 1], b-1, z-1);
 				
 				Listener_Spieler.buttonListener(button_A0_bis_J9[b-1][z-1]);
 				
@@ -237,7 +237,7 @@ public class Spieler {
 		textField_Anzahl_Schlachtschiff.setBounds(525, 150, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_Schlachtschiff);
 	    
-	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_Schlachtschiff, 0);
+	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Schlachtschiff, 0);
 	    
 	    																						//JTextField Kreuzer
 	    textField_Anzahl_Kreuzer = new JTextField();
@@ -249,7 +249,7 @@ public class Spieler {
 	    textField_Anzahl_Kreuzer.setBounds(525, 185, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_Kreuzer);
 	    
-	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_Kreuzer, 1);
+	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Kreuzer, 1);
 	    
 	    																						//JTextField Zerstörer
 	    textField_Anzahl_Zerstörer = new JTextField();
@@ -261,7 +261,7 @@ public class Spieler {
 	    textField_Anzahl_Zerstörer.setBounds(525, 220, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_Zerstörer);
 	    
-	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_Zerstörer, 2);
+	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Zerstörer, 2);
 	    
 	    																						//JTextField UBoot
 	    textField_Anzahl_UBoot = new JTextField();
@@ -273,7 +273,7 @@ public class Spieler {
 	    textField_Anzahl_UBoot.setBounds(525, 255, 50, 25);
 	    frame_spieler.getContentPane().add(textField_Anzahl_UBoot);
 	    
-	    Getter_Setter.setTextField_Anzahl_Schiffe(textField_Anzahl_UBoot, 3);
+	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_UBoot, 3);
 
 	}
 	
@@ -329,8 +329,8 @@ public class Spieler {
 		textArea_hinweis.setBackground(new Color(222,222,222));
 		frame_spieler.getContentPane().add(textArea_hinweis);
 		
-		Getter_Setter.setTextField_hinweis(textArea_hinweis);
-		Getter_Setter.getTextField_hinweis().setText("Hier werden Hinweise stehen wenn ein Fehler auftritt");
+		Getter_Setter_Spieler.setTextField_hinweis(textArea_hinweis);
+		Getter_Setter_Spieler.getTextField_hinweis().setText("Hier werden Hinweise stehen wenn ein Fehler auftritt");
 		
 		
 	}
