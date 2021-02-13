@@ -7,6 +7,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Getter_Setter {
+	
+	//TODO Umbenennen in Getter_Setter_Spieler
 
 																											//JButton A0 bis J9
 	public static JButton[][] button_A0_bis_J9 = new JButton[10][10];
