@@ -11,12 +11,13 @@ public class Listener_Spieler {
 	private static String nicht_platzierbar = "Das Schiff kann dort nicht platziert werden";
 	private static String keine_schiffe_mehr = "Es gibt keine Schiffe mehr die man platzieren könnte";
 	private static String hinweis_text = "Hier werden Hinweise stehen wenn ein Fehler auftritt";
-	
+	private static String anderes_schiff_in_der_nähe = "Das Schiff kann nicht platziert werden, da ein anderes Schiff zu nah "
+			+ "am zu platzierenden Schiff liegt";
+
 	private static int buchstabe;
 	private static int zahl;
 	private static int Schiff;
 	private static int Schifflänge;
-	
 
 	public static void buttonListener(JButton button_ausgewählt) {
 		button_ausgewählt.addMouseListener(new MouseAdapter() {
@@ -36,11 +37,13 @@ public class Listener_Spieler {
 					switch (Getter_Setter_Spieler.getGruppe_schiffe().getSelection().getActionCommand()) {
 
 					case "Schlachtschiff":
-						
+
 						Schiff = 0;
 						Schifflänge = 5;
 
-						horizontal(Schiff, Schifflänge);
+						if (test_horizontal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							horizontal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -49,7 +52,9 @@ public class Listener_Spieler {
 						Schiff = 1;
 						Schifflänge = 4;
 
-						horizontal(Schiff, Schifflänge);
+						if (test_horizontal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							horizontal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -58,7 +63,9 @@ public class Listener_Spieler {
 						Schiff = 2;
 						Schifflänge = 3;
 
-						horizontal(Schiff, Schifflänge);
+						if (test_horizontal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							horizontal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -67,7 +74,9 @@ public class Listener_Spieler {
 						Schiff = 3;
 						Schifflänge = 2;
 
-						horizontal(Schiff, Schifflänge);
+						if (test_horizontal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							horizontal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -82,8 +91,10 @@ public class Listener_Spieler {
 
 						Schiff = 0;
 						Schifflänge = 5;
-						
-						vertikal(Schiff, Schifflänge);
+
+						if (test_vertikal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							vertikal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -91,8 +102,10 @@ public class Listener_Spieler {
 
 						Schiff = 1;
 						Schifflänge = 4;
-						
-						vertikal(Schiff, Schifflänge);
+
+						if (test_vertikal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							vertikal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -100,8 +113,10 @@ public class Listener_Spieler {
 
 						Schiff = 2;
 						Schifflänge = 3;
-						
-						vertikal(Schiff, Schifflänge);
+
+						if (test_vertikal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							vertikal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -109,8 +124,10 @@ public class Listener_Spieler {
 
 						Schiff = 3;
 						Schifflänge = 2;
-						
-						vertikal(Schiff, Schifflänge);
+
+						if (test_vertikal_schiff_in_der_nähe(Schiff, Schifflänge)) {
+							vertikal(Schiff, Schifflänge);
+						}
 
 						break;
 
@@ -124,16 +141,53 @@ public class Listener_Spieler {
 
 		});
 	}
-	
+
+	private static boolean test_horizontal_schiff_in_der_nähe(int Schiff, int Schifflänge) {
+
+		// Einmal für den ganzen äußeren Rand testen ob dort ein Schiff ist, dann wird
+		// kein neues platziert
+		for (int j = buchstabe - 1; j <= (buchstabe + Schifflänge); j++) {
+
+			for (int k = zahl + 1; k >= (zahl - 1); k--) {
+
+				for (int l = 0; l <= 1; l++) {
+
+					try {
+
+						if (Color.decode("#f08080")
+								.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(j, k).getBackground())
+								|| Color.decode("#98FB98")
+										.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(j, k).getBackground())) {
+
+							Getter_Setter_Spieler.getTextField_hinweis().setText(anderes_schiff_in_der_nähe);
+							Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
+
+							return false;
+
+						}
+
+					} catch (IndexOutOfBoundsException ioobe) {
+						continue;
+					}
+
+				}
+
+			}
+
+		}
+		return true;
+
+	}
+
 	private static void horizontal(int Schiff, int Schifflänge) {
-		
-		for (int i = buchstabe; i <= (buchstabe + (Schifflänge-1)); i++) {
+
+		for (int i = buchstabe; i <= (buchstabe + (Schifflänge - 1)); i++) {
 
 			// Wenn es mehr als ein Schiff gibt
 			if (Integer.parseInt(Getter_Setter_Spieler.getTextField_Anzahl_Schiffe()[Schiff].getText()) > 0) {
 
 				// Wenn es nicht über die Kante geht
-				if (!((buchstabe + (Schifflänge-1)) > 9)) {
+				if (!((buchstabe + (Schifflänge - 1)) > 9)) {
 
 					Getter_Setter_Spieler.getButton_A0_bis_J9(i, zahl).setText("X");
 
@@ -146,10 +200,9 @@ public class Listener_Spieler {
 							for (int m = 0; m <= 1; m++) {
 
 								try {
-									
+
 									Getter_Setter_Spieler.getButton_A0_bis_J9(farbe_komplett, farbe_zahl)
-									.setBackground(Color.decode("#f08080"));
-									
+											.setBackground(Color.decode("#f08080"));
 
 								} catch (IndexOutOfBoundsException iaob) {
 									continue;
@@ -159,8 +212,7 @@ public class Listener_Spieler {
 							for (int n = 0; n <= 1; n++) {
 								// Grün
 
-								if (!(farbe_komplett == buchstabe - 1
-										|| farbe_komplett == buchstabe + (Schifflänge))) {
+								if (!(farbe_komplett == buchstabe - 1 || farbe_komplett == buchstabe + (Schifflänge))) {
 									Getter_Setter_Spieler.getButton_A0_bis_J9(farbe_komplett, zahl)
 											.setBackground(Color.decode("#98FB98"));
 								}
@@ -176,7 +228,7 @@ public class Listener_Spieler {
 					break;
 				}
 
-				if (i == buchstabe + Schifflänge) {
+				if (i == buchstabe + (Schifflänge - 1)) {
 
 					// Den Text setzen zu dem Text von vorher minus 1
 					Getter_Setter_Spieler.getTextField_Anzahl_Schiffe()[Schiff].setText(Integer.toString(
@@ -193,35 +245,68 @@ public class Listener_Spieler {
 
 		}
 
-		
 	}
-	
+
+	private static boolean test_vertikal_schiff_in_der_nähe(int Schiff, int Schifflänge) {
+
+		for (int j = zahl + 1; j >= zahl - Schifflänge; j--) {
+
+			for (int k = buchstabe - 1 ; k <= buchstabe + 1 ; k++) {
+
+				for (int m = 0; m <= 1; m++) {
+
+					try {
+
+						if (Color.decode("#f08080")
+								.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(k, j).getBackground())
+								|| Color.decode("#98FB98")
+										.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(k, j).getBackground())) {
+
+							Getter_Setter_Spieler.getTextField_hinweis().setText(anderes_schiff_in_der_nähe);
+							Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
+
+							return false;
+
+						}
+
+					} catch (IndexOutOfBoundsException ioobe) {
+						continue;
+					}
+
+				}
+
+			}
+
+		}
+
+		return true;
+
+	}
+
 	private static void vertikal(int Schiff, int Schifflänge) {
-		
-		for (int i = zahl; i >= (zahl - (Schifflänge-1)); i--) {
+
+		for (int i = zahl; i >= (zahl - (Schifflänge - 1)); i--) {
 
 			// Wenn es mehr als ein Schiff gibt
 			if (Integer.parseInt(Getter_Setter_Spieler.getTextField_Anzahl_Schiffe()[Schiff].getText()) > 0) {
 
 				// Wenn es nicht über die Kante geht
-				if ((zahl - (Schifflänge-1)) >= 0) {
+				if ((zahl - (Schifflänge - 1)) >= 0) {
 
 					Getter_Setter_Spieler.getButton_A0_bis_J9(buchstabe, i).setText("X");
 
 					// Rand außendrum Rötlich färben
-					for (int farbe_komplett = zahl + 1; farbe_komplett >= (zahl
-							- Schifflänge); farbe_komplett--) {
-						
+					for (int farbe_komplett = zahl + 1; farbe_komplett >= (zahl - Schifflänge); farbe_komplett--) {
 
-						for (int farbe_buchstabe = buchstabe - 1; farbe_buchstabe <= (buchstabe + 1); farbe_buchstabe++) {
-							
+						for (int farbe_buchstabe = buchstabe - 1; farbe_buchstabe <= (buchstabe
+								+ 1); farbe_buchstabe++) {
+
 							for (int m = 0; m <= 1; m++) {
 
 								try {
-									
+
 									Getter_Setter_Spieler.getButton_A0_bis_J9(farbe_buchstabe, farbe_komplett)
-									.setBackground(Color.decode("#f08080"));
-										
+											.setBackground(Color.decode("#f08080"));
 
 								} catch (IndexOutOfBoundsException iaob) {
 									continue;
@@ -231,8 +316,7 @@ public class Listener_Spieler {
 							for (int n = 0; n <= 1; n++) {
 								// Grün
 
-								if (!(farbe_komplett == zahl + 1
-										|| farbe_komplett == zahl - Schifflänge)) {
+								if (!(farbe_komplett == zahl + 1 || farbe_komplett == zahl - Schifflänge)) {
 									Getter_Setter_Spieler.getButton_A0_bis_J9(buchstabe, farbe_komplett)
 											.setBackground(Color.decode("#98FB98"));
 								}
@@ -248,7 +332,7 @@ public class Listener_Spieler {
 					break;
 				}
 
-				if (i == zahl - 4) {
+				if (i == zahl - (Schifflänge - 1)) {
 
 					// Den Text setzen zu dem Text von vorher minus 1
 					Getter_Setter_Spieler.getTextField_Anzahl_Schiffe()[Schiff].setText(Integer.toString(
@@ -264,7 +348,7 @@ public class Listener_Spieler {
 			}
 
 		}
-		
+
 	}
 
 }

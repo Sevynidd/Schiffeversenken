@@ -323,7 +323,7 @@ public class Spieler {
 		JTextArea textArea_hinweis = new JTextArea();
 		textArea_hinweis.setWrapStyleWord(true);
 		textArea_hinweis.setLineWrap(true);
-		textArea_hinweis.setBounds(474, 410, 300, 40);
+		textArea_hinweis.setBounds(474, 380, 300, 70);
 		textArea_hinweis.setEditable(false);
 		textArea_hinweis.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textArea_hinweis.setBackground(new Color(222,222,222));
