@@ -2,10 +2,15 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -43,9 +48,11 @@ public class Spieler {
 		frame_spieler.setTitle("Spieler");
 		frame_spieler.getContentPane().setBackground(Color.WHITE);
 		frame_spieler.getContentPane().setLayout(null);
-		frame_spieler.setBounds(100, 100, 800, 500);
+		frame_spieler.setBounds(100, 100, 800, 510);
+		frame_spieler.setResizable(false);
 		frame_spieler.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		menu_erstellen();
 		felder_erstellen_A_bis_J();
 		felder_erstellen_0_bis_9();
 		button_erstellen_A0_bis_J9();
@@ -55,7 +62,6 @@ public class Spieler {
 		buttons_Auswahl_Schiffe();
 		hinweis_textfeld();
 		
-
 	}
 
 																								// JTextField A-J
@@ -188,7 +194,6 @@ public class Spieler {
 		Getter_Setter_Spieler.setGruppe_hor_vert(gruppe_hor_vert);
 	    
 		RadioButton_Horizontal.setSelected(true);
-		//System.out.println(gruppe_hor_vert.getSelection().getActionCommand());
 		
 	}
 
@@ -323,7 +328,7 @@ public class Spieler {
 		JTextArea textArea_hinweis = new JTextArea();
 		textArea_hinweis.setWrapStyleWord(true);
 		textArea_hinweis.setLineWrap(true);
-		textArea_hinweis.setBounds(474, 380, 300, 70);
+		textArea_hinweis.setBounds(474, 368, 300, 70);
 		textArea_hinweis.setEditable(false);
 		textArea_hinweis.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textArea_hinweis.setBackground(new Color(222,222,222));
@@ -332,6 +337,34 @@ public class Spieler {
 		Getter_Setter_Spieler.setTextField_hinweis(textArea_hinweis);
 		Getter_Setter_Spieler.getTextField_hinweis().setText("Hier werden Hinweise stehen wenn ein Fehler auftritt");
 		
+		
+	}
+	
+	private void menu_erstellen() {
+		
+		JMenuBar mb = new JMenuBar();
+		
+		JMenu menu = new JMenu("Menu");
+		
+		@SuppressWarnings("serial")
+		JMenuItem hilfe = new JMenuItem(new AbstractAction("Hilfe") {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				@SuppressWarnings("unused")
+				Hilfe hilfe = new Hilfe();
+				
+				
+			}
+
+			
+		});
+		
+		
+		menu.add(hilfe);
+		mb.add(menu);
+		
+		frame_spieler.setJMenuBar(mb);
 		
 	}
 }

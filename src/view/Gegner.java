@@ -35,6 +35,7 @@ public class Gegner {
 		frame_gegner.getContentPane().setBackground(Color.WHITE);
 		frame_gegner.getContentPane().setLayout(null);
 		frame_gegner.setBounds(1000, 100, 500, 500);
+		frame_gegner.setResizable(false);
 		frame_gegner.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		felder_erstellen_A_bis_J();
