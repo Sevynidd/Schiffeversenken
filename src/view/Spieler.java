@@ -362,11 +362,9 @@ public class Spieler {
 				
 				@SuppressWarnings("unused")
 				Hilfe hilfe = new Hilfe();
-				
-				
+								
 			}
-
-			
+	
 		});
 		
 		
