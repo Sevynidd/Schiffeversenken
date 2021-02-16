@@ -3,7 +3,9 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -46,6 +48,13 @@ public class Spieler {
 																								// JFrame
 		frame_spieler = new JFrame();
 		frame_spieler.setTitle("Spieler");
+		try {
+			
+			frame_spieler.setIconImage(ImageIO.read(getClass().getResourceAsStream("/ressources/Spieler.png")));
+			
+		}catch(IOException ioe) {
+			ioe.printStackTrace();
+		}
 		frame_spieler.getContentPane().setBackground(Color.WHITE);
 		frame_spieler.getContentPane().setLayout(null);
 		frame_spieler.setBounds(100, 100, 800, 510);

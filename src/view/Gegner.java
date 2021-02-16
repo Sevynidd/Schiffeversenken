@@ -2,7 +2,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -32,6 +34,13 @@ public class Gegner {
 
 		frame_gegner = new JFrame();
 		frame_gegner.setTitle("Gegner");
+		try {
+			
+			frame_gegner.setIconImage(ImageIO.read(getClass().getResourceAsStream("/ressources/Gegner.png")));
+			
+		}catch(IOException ioe) {
+			ioe.printStackTrace();
+		}
 		frame_gegner.getContentPane().setBackground(Color.WHITE);
 		frame_gegner.getContentPane().setLayout(null);
 		frame_gegner.setBounds(1000, 100, 500, 500);
