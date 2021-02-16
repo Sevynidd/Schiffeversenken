@@ -164,7 +164,7 @@ public class Spieler {
 	}
 
 
-																								// JButtons A0-J9
+																							
 	private void erstellen_radioButtons() {
 	
 																								// JRadioButton Horizontal

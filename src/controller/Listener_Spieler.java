@@ -144,37 +144,32 @@ public class Listener_Spieler {
 
 	private static boolean test_horizontal_schiff_in_der_nähe(int Schiff, int Schifflänge) {
 
-		// Einmal für den ganzen äußeren Rand testen ob dort ein Schiff ist, dann wird
-		// kein neues platziert
-		for (int j = buchstabe - 1; j <= (buchstabe + Schifflänge); j++) {
+		/*
+		 * Einmal für den ganzen äußeren Rand testen ob dort ein Schiff ist, dann wird
+		 * kein neues platziert
+		 */
 
-			for (int k = zahl + 1; k >= (zahl - 1); k--) {
+		for (int j = buchstabe; j <= (buchstabe + Schifflänge - 1); j++) {
 
-				for (int l = 0; l <= 1; l++) {
+			try {
 
-					try {
+				if (Color.decode("#f08080").equals(Getter_Setter_Spieler.getButton_A0_bis_J9(j, zahl).getBackground())
+						|| Color.decode("#98FB98")
+								.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(j, zahl).getBackground())) {
 
-						if (Color.decode("#f08080")
-								.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(j, k).getBackground())
-								|| Color.decode("#98FB98")
-										.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(j, k).getBackground())) {
+					Getter_Setter_Spieler.getTextField_hinweis().setText(anderes_schiff_in_der_nähe);
+					Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
 
-							Getter_Setter_Spieler.getTextField_hinweis().setText(anderes_schiff_in_der_nähe);
-							Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
-
-							return false;
-
-						}
-
-					} catch (IndexOutOfBoundsException ioobe) {
-						continue;
-					}
+					return false;
 
 				}
 
+			} catch (IndexOutOfBoundsException ioobe) {
+				continue;
 			}
 
 		}
+
 		return true;
 
 	}
@@ -249,32 +244,24 @@ public class Listener_Spieler {
 
 	private static boolean test_vertikal_schiff_in_der_nähe(int Schiff, int Schifflänge) {
 
-		for (int j = zahl + 1; j >= zahl - Schifflänge; j--) {
+		for (int j = zahl; j >= zahl - Schifflänge + 1; j--) {
 
-			for (int k = buchstabe - 1 ; k <= buchstabe + 1 ; k++) {
+			try {
 
-				for (int m = 0; m <= 1; m++) {
+				if (Color.decode("#f08080")
+						.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(buchstabe, j).getBackground())
+						|| Color.decode("#98FB98")
+								.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(buchstabe, j).getBackground())) {
 
-					try {
+					Getter_Setter_Spieler.getTextField_hinweis().setText(anderes_schiff_in_der_nähe);
+					Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
 
-						if (Color.decode("#f08080")
-								.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(k, j).getBackground())
-								|| Color.decode("#98FB98")
-										.equals(Getter_Setter_Spieler.getButton_A0_bis_J9(k, j).getBackground())) {
-
-							Getter_Setter_Spieler.getTextField_hinweis().setText(anderes_schiff_in_der_nähe);
-							Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
-
-							return false;
-
-						}
-
-					} catch (IndexOutOfBoundsException ioobe) {
-						continue;
-					}
+					return false;
 
 				}
 
+			} catch (IndexOutOfBoundsException ioobe) {
+				continue;
 			}
 
 		}
@@ -350,5 +337,5 @@ public class Listener_Spieler {
 		}
 
 	}
-	
+
 }
