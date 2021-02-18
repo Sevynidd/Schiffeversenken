@@ -17,7 +17,7 @@ public class Main {
 			} catch (Exception ex) {
 				System.err.println("Failed to initialize LaF");
 			}
-
+			
 			Spieler spieler = new Spieler();
 			spieler.frame_spieler.setVisible(true);
 

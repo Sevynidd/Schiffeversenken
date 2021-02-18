@@ -28,11 +28,11 @@ public class Spieler {
 	private String[] buchstaben = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 	private int[] zahlen = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-																								// JTextFields
+																												// JTextFields
 	private JTextField textField_A_bis_J[];
 	private JTextField textField_0_bis_9[];
 	
-																								//	JTextFields Namen Schiffe
+																												// JTextFields Namen Schiffe
 	private JTextField txtSchlachtschiff;
 	private JTextField txtKreuzer;
 	private JTextField txtZerstrer;
@@ -45,7 +45,7 @@ public class Spieler {
 
 	
 	private void initialize() {
-																								// JFrame
+																												// JFrame
 		frame_spieler = new JFrame();
 		frame_spieler.setTitle("Spieler");
 		try {
@@ -73,7 +73,7 @@ public class Spieler {
 		
 	}
 
-																								// JTextField A-J
+																												// JTextField A-J
 	private void felder_erstellen_A_bis_J() {
 
 		textField_A_bis_J = new JTextField[10];
@@ -98,7 +98,7 @@ public class Spieler {
 
 	}
 
-																								// JTextField 0-9
+																												// JTextField 0-9
 	private void felder_erstellen_0_bis_9() {
 
 		textField_0_bis_9 = new JTextField[10];
@@ -125,7 +125,7 @@ public class Spieler {
 
 	private void buttons_Auswahl_Schiffe() {
 			
-																								//JRadioButton Schlachtschiff
+																												// JRadioButton Schlachtschiff
 		JRadioButton RadioButton_Schlachtschiff = new JRadioButton("");
 		RadioButton_Schlachtschiff.setActionCommand("Schlachtschiff");
 		RadioButton_Schlachtschiff.setHorizontalAlignment(SwingConstants.CENTER);
@@ -134,7 +134,7 @@ public class Spieler {
 		
 		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Schlachtschiff, 0);
 	
-																								//JRadioButton Kreuzer
+																												// JRadioButton Kreuzer
 		JRadioButton RadioButton_Kreuzer = new JRadioButton("");
 		RadioButton_Kreuzer.setActionCommand("Kreuzer");
 		RadioButton_Kreuzer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,7 +143,7 @@ public class Spieler {
 		
 		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Kreuzer, 1);
 		
-																								//JRadioButton Zerstörer
+																												// JRadioButton Zerstörer
 		JRadioButton RadioButton_Zerstörer = new JRadioButton("");
 		RadioButton_Zerstörer.setActionCommand("Zerst\u00F6rer");
 		RadioButton_Zerstörer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -152,7 +152,7 @@ public class Spieler {
 		
 		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Zerstörer, 2);
 		
-																								//JRadioButton U-Boot
+																												// JRadioButton U-Boot
 		JRadioButton RadioButton_UBoot = new JRadioButton("");
 		RadioButton_UBoot.setActionCommand("UBoot");
 		RadioButton_UBoot.setHorizontalAlignment(SwingConstants.CENTER);
@@ -178,7 +178,7 @@ public class Spieler {
 																							
 	private void erstellen_radioButtons() {
 	
-																								// JRadioButton Horizontal
+																												// JRadioButton Horizontal
 		JRadioButton RadioButton_Horizontal = new JRadioButton("Horizontal");
 		RadioButton_Horizontal.setActionCommand("Horizontal");
 		RadioButton_Horizontal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -187,7 +187,7 @@ public class Spieler {
 		
 		Getter_Setter_Spieler.setRadioButton_Horizontal_Vertikal(RadioButton_Horizontal, 0);
 	
-																								// JRadioButton Vertikal
+																												// JRadioButton Vertikal
 		JRadioButton RadioButton_Vertikal = new JRadioButton("Vertikal");
 		RadioButton_Vertikal.setActionCommand("Vertikal");
 		RadioButton_Vertikal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -245,7 +245,7 @@ public class Spieler {
 		JTextField textField_Anzahl_Zerstörer;
 		JTextField textField_Anzahl_UBoot;
 		
-																								//JTextField Schlachtschiff
+																													// JTextField Schlachtschiff
 		textField_Anzahl_Schlachtschiff = new JTextField();
 		textField_Anzahl_Schlachtschiff.setEditable(false);
 		textField_Anzahl_Schlachtschiff.setFocusable(false);
@@ -257,7 +257,7 @@ public class Spieler {
 	    
 	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Schlachtschiff, 0);
 	    
-	    																						//JTextField Kreuzer
+	    																											// JTextField Kreuzer
 	    textField_Anzahl_Kreuzer = new JTextField();
 	    textField_Anzahl_Kreuzer.setEditable(false);
 	    textField_Anzahl_Kreuzer.setFocusable(false);
@@ -270,7 +270,7 @@ public class Spieler {
 	    
 	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Kreuzer, 1);
 	    
-	    																						//JTextField Zerstörer
+	    																											// JTextField Zerstörer
 	    textField_Anzahl_Zerstörer = new JTextField();
 	    textField_Anzahl_Zerstörer.setEditable(false);
 	    textField_Anzahl_Zerstörer.setFocusable(false);
@@ -283,7 +283,7 @@ public class Spieler {
 	    
 	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Zerstörer, 2);
 	    
-	    																						//JTextField UBoot
+	    																											// JTextField UBoot
 	    textField_Anzahl_UBoot = new JTextField();
 	    textField_Anzahl_UBoot.setEditable(false);
 	    textField_Anzahl_UBoot.setFocusable(false);
@@ -300,7 +300,7 @@ public class Spieler {
 	
 	private void text_Schiffe() {
 		
-																								//JTextField Schlachtschiff
+																													// JTextField Schlachtschiff
 		txtSchlachtschiff = new JTextField();
 		txtSchlachtschiff.setEditable(false);
 		txtSchlachtschiff.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -310,7 +310,7 @@ public class Spieler {
 		txtSchlachtschiff.setBounds(585, 150, 130, 25);
 		frame_spieler.getContentPane().add(txtSchlachtschiff);
 		txtSchlachtschiff.setColumns(10);
-																								//JTextField Kreuzer
+																													// JTextField Kreuzer
 		txtKreuzer = new JTextField();
 		txtKreuzer.setEditable(false);
 		txtKreuzer.setText("Kreuzer (4)");
@@ -320,7 +320,7 @@ public class Spieler {
 		txtKreuzer.setColumns(10);
 		txtKreuzer.setBounds(585, 185, 130, 25);
 		frame_spieler.getContentPane().add(txtKreuzer);
-																								//JTextField Zerstörer
+																													// JTextField Zerstörer
 		txtZerstrer = new JTextField();
 		txtZerstrer.setEditable(false);
 		txtZerstrer.setText("Zerst\u00F6rer (3)");
@@ -330,7 +330,7 @@ public class Spieler {
 		txtZerstrer.setColumns(10);
 		txtZerstrer.setBounds(585, 220, 130, 25);
 		frame_spieler.getContentPane().add(txtZerstrer);
-																								//JTextField UBoot
+																													// JTextField UBoot
 		txtUboot = new JTextField();
 		txtUboot.setEditable(false);
 		txtUboot.setText("U-Boot (2)");
@@ -344,7 +344,7 @@ public class Spieler {
 	}
 	
 	private void hinweis_textfeld() {
-																								//JTextArea Hinweis
+																													// JTextArea Hinweis
 		JTextArea textArea_hinweis = new JTextArea();
 		textArea_hinweis.setWrapStyleWord(true);
 		textArea_hinweis.setLineWrap(true);

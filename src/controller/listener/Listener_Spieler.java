@@ -37,8 +37,6 @@ public class Listener_Spieler {
 							.parseInt(Getter_Setter_Spieler.getTextField_Anzahl_Schiffe()[i].getText());
 				}
 
-				System.out.println(schiff_anzahl_insgesamt);
-
 				Getter_Setter_Spieler.getTextField_hinweis().setText(hinweis_text);
 				Getter_Setter_Spieler.getTextField_hinweis().setBackground(new Color(222, 222, 222));
 
@@ -98,6 +96,7 @@ public class Listener_Spieler {
 					}
 
 					break;
+					
 				case "Vertikal":
 
 					switch (Getter_Setter_Spieler.getGruppe_schiffe().getSelection().getActionCommand()) {

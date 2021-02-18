@@ -49,7 +49,7 @@ public class Hilfe_Menu {
 		// Horizontal BufferedImage wird erstellt
 
 		try {
-			horizontal = ImageIO.read(this.getClass().getResource("/ressources/Horizontal.png"));
+			horizontal = ImageIO.read(this.getClass().getResource("/ressources/hilfe/Horizontal.png"));
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
@@ -66,7 +66,7 @@ public class Hilfe_Menu {
 
 		// Vertikal BufferedImage wird erstellt
 		try {
-			vertikal = ImageIO.read(this.getClass().getResource("/ressources/Vertikal.png"));
+			vertikal = ImageIO.read(this.getClass().getResource("/ressources/hilfe/Vertikal.png"));
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
