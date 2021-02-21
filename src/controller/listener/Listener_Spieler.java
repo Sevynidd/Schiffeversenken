@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 import controller.getter_setter.Getter_Setter_Spieler;
-import view.Connecten_oder_Hosten;
+import view.connect.Connecten_oder_Hosten;
 
 public class Listener_Spieler {
 

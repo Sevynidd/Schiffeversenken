@@ -4,8 +4,8 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-import view.Gegner;
-import view.Spieler;
+import view.fenster.Gegner;
+import view.fenster.Spieler;
 
 public class Main {
 
