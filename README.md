@@ -17,6 +17,9 @@ try {
 ## Hinweis wegen verschachtelten Ordnern
 
 Dadurch, dass ich mehrere Ordner für eine bessere Struktur verschachtelt habe, muss man in Eclipse erst die `Package Presentation` von `Flat` zu `Hierarchical` umstellen
+
+### Wie funktioniert das?
+
 1. Oben rechts auf den kleinen Pfeil im `Package Explorer` klicken
 2. `Package Presentation`
 3. `Hierarchical`
