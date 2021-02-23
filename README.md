@@ -1,7 +1,8 @@
 # Schiffeversenken
 
+- [Zugehöriger Codeabschnitt](#zugeh-riger-codeabschnitt)
 - [Hinweis wegen verschachtelten Ordnern](#Hinweis-wegen-verschachtelten-Ordnern)
-  - [Wie funktioniert das?](#Wie-funktioniert-das-?)
+  - [Wie funktioniert das?](#Wie-funktioniert-das-)
 
 Die beigelieferte [FlatLaf.jar](https://search.maven.org/artifact/com.formdev/flatlaf/1.0-rc3/jar) muss als Classpath integriert werden.
 
