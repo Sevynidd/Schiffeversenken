@@ -34,7 +34,7 @@ public class Connecten_oder_Hosten {
 		frame_connecten_oder_hosten.setResizable(false);
 		frame_connecten_oder_hosten.setAlwaysOnTop(true);
 		frame_connecten_oder_hosten.setBounds(300, 200, 450, 250);
-		frame_connecten_oder_hosten.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame_connecten_oder_hosten.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_connecten_oder_hosten.getContentPane().setLayout(null);
 
 		txtConnectenOderHosten = new JTextField();
