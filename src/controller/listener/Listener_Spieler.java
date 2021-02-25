@@ -3,11 +3,14 @@ package controller.listener;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 
 import javax.swing.JButton;
 
 import controller.getter_setter.Getter_Setter_Spieler;
-import view.connect.Connecten_oder_Hosten;
+import controller.threads.Thread_empfangen;
+import controller.threads.Thread_senden;
 
 public class Listener_Spieler {
 
@@ -23,6 +26,8 @@ public class Listener_Spieler {
 	private static int schifflänge;
 
 	private static int schiff_anzahl_insgesamt;
+	
+	private static DatagramSocket hosten;
 
 	public static void buttonListener(JButton button_ausgewählt) {
 		button_ausgewählt.addMouseListener(new MouseAdapter() {
@@ -258,8 +263,7 @@ public class Listener_Spieler {
 		
 		if (schiff_anzahl_insgesamt == 0) {
 			
-			Connecten_oder_Hosten c_oder_h = new Connecten_oder_Hosten();
-			c_oder_h.frame_connecten_oder_hosten.setVisible(true);
+			connect();
 
 		}
 
@@ -363,11 +367,27 @@ public class Listener_Spieler {
 		
 		if (schiff_anzahl_insgesamt == 0) {
 			
-			Connecten_oder_Hosten c_oder_h = new Connecten_oder_Hosten();
-			c_oder_h.frame_connecten_oder_hosten.setVisible(true);
+			connect();
 
 		}
 
+	}
+	
+	private static void connect() {
+		
+		try {
+			hosten = new DatagramSocket(Thread_senden.PORT);
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+		
+		Thread_senden.getCommunicationSender().setDatagramSocket(hosten);
+
+		
+		Thread sender_Thread = new Thread(Thread_senden.getCommunicationSender());
+		sender_Thread.start();
+		Thread empfänger_Thread = new Thread(new Thread_empfangen(hosten));
+		empfänger_Thread.start();
 	}
 
 }
