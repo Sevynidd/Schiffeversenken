@@ -3,14 +3,11 @@ package controller.listener;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.net.DatagramSocket;
-import java.net.SocketException;
 
 import javax.swing.JButton;
 
 import controller.getter_setter.Getter_Setter_Spieler;
-import controller.threads.Thread_empfangen;
-import controller.threads.Thread_senden;
+import view.connecten_oder_hosten.Connecten_oder_Hosten;
 
 public class Listener_Spieler {
 
@@ -26,10 +23,8 @@ public class Listener_Spieler {
 	private static int schifflänge;
 
 	private static int schiff_anzahl_insgesamt;
-	
-	private static DatagramSocket hosten;
 
-	public static void buttonListener(JButton button_ausgewählt) {
+	public static void buttonListener_spieler(JButton button_ausgewählt) {
 		button_ausgewählt.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent cursor) {
@@ -101,7 +96,7 @@ public class Listener_Spieler {
 					}
 
 					break;
-					
+
 				case "Vertikal":
 
 					switch (Getter_Setter_Spieler.getGruppe_schiffe().getSelection().getActionCommand()) {
@@ -260,10 +255,11 @@ public class Listener_Spieler {
 			}
 
 		}
-		
+
 		if (schiff_anzahl_insgesamt == 0) {
-			
-			connect();
+
+			Connecten_oder_Hosten window = new Connecten_oder_Hosten();
+			window.frame_connecten_oder_hosten.setVisible(true);
 
 		}
 
@@ -364,30 +360,14 @@ public class Listener_Spieler {
 			}
 
 		}
-		
+
 		if (schiff_anzahl_insgesamt == 0) {
-			
-			connect();
+
+			Connecten_oder_Hosten window = new Connecten_oder_Hosten();
+			window.frame_connecten_oder_hosten.setVisible(true);
 
 		}
 
-	}
-	
-	private static void connect() {
-		
-		try {
-			hosten = new DatagramSocket(Thread_senden.PORT);
-		} catch (SocketException e) {
-			e.printStackTrace();
-		}
-		
-		Thread_senden.getCommunicationSender().setDatagramSocket(hosten);
-
-		
-		Thread sender_Thread = new Thread(Thread_senden.getCommunicationSender());
-		sender_Thread.start();
-		Thread empfänger_Thread = new Thread(new Thread_empfangen(hosten));
-		empfänger_Thread.start();
 	}
 
 }

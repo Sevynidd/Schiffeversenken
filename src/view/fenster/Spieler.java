@@ -231,7 +231,7 @@ public class Spieler {
 				
 				Getter_Setter_Spieler.setButton_A0_bis_J9(button_A0_bis_J9[b - 1][z - 1], b-1, z-1);
 				
-				Listener_Spieler.buttonListener(button_A0_bis_J9[b-1][z-1]);
+				Listener_Spieler.buttonListener_spieler(button_A0_bis_J9[b-1][z-1]);
 				
 
 			}
