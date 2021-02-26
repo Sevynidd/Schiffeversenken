@@ -8,8 +8,8 @@ import java.net.SocketException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import controller.threads.empfangen.Thread_empfangen;
-import controller.threads.senden.Thread_senden;
+import controller.threads.Thread_empfangen;
+import controller.threads.Thread_senden;
 import view.connecten_oder_hosten.Connecten_oder_Hosten;
 import view.spieler_wird_gesucht.Spieler_wird_gesucht;
 

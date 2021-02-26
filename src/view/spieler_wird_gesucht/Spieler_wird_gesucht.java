@@ -7,7 +7,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controller.threads.spieler_wird_gesucht.Thread_Spieler_wird_gesucht;
+import controller.threads.Thread_Spieler_wird_gesucht;
 
 public class Spieler_wird_gesucht {
 
