@@ -22,6 +22,8 @@ public class Thread_empfangen implements Runnable {
 				this.datagramSocket.receive(datagramPacket);
 			} catch (IOException e) {
 				e.printStackTrace();
+			} catch (NullPointerException npe) {
+				continue;
 			}
 
 			InetAddress senderAdresse = datagramPacket.getAddress();

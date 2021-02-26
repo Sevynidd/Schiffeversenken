@@ -17,7 +17,7 @@ public class Connecten_oder_Hosten {
 	public static JButton btnConnecten;
 	public static JButton btnHosten;
 	// 0 = Hosten, 1 = Connecten
-	public static Boolean[] btnClicked;
+	public static Boolean[] btnClicked = new Boolean[2];
 	
 	private JTextField txtConnectenOderHosten;
 
