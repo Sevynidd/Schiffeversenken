@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import view.connecten_oder_hosten.Connecten_oder_Hosten;
+import controller.getter_setter.Getter_Setter_Thread_empfangen;
 
 public class Thread_senden implements Runnable {
 
@@ -27,8 +27,8 @@ public class Thread_senden implements Runnable {
 	public void run() {
 
 		while (true) {
-
-			if (Connecten_oder_Hosten.btnClicked[0]) {
+			
+			if (Getter_Setter_Thread_empfangen.getBtnClicked(0) & !Getter_Setter_Thread_empfangen.getBtnClicked(1)) {
 				
 				nachricht = "SVSearch,[1.0]";
 
@@ -41,7 +41,7 @@ public class Thread_senden implements Runnable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			} else if (Connecten_oder_Hosten.btnClicked[1]) {
+			} else if (Getter_Setter_Thread_empfangen.getBtnClicked(1) & !Getter_Setter_Thread_empfangen.getBtnClicked(0)) {
 				/*
 				 * Nichts tun, da er bei Thread_empfangen darauf wartet was rein kommt und
 				 * die passende Antwort sendet

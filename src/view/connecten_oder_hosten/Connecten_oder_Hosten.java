@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.getter_setter.Getter_Setter_Thread_empfangen;
 import controller.listener.Listener_Connecten_oder_Hosten;
 
 public class Connecten_oder_Hosten {
@@ -16,8 +17,6 @@ public class Connecten_oder_Hosten {
 	
 	public static JButton btnConnecten;
 	public static JButton btnHosten;
-	// 0 = Hosten, 1 = Connecten
-	public static Boolean[] btnClicked = new Boolean[2];
 	
 	private JTextField txtConnectenOderHosten;
 
@@ -36,8 +35,9 @@ public class Connecten_oder_Hosten {
 	}
 
 	private void initialize() {
-		btnClicked[0] = false;
-		btnClicked[1] = false;
+		
+		Getter_Setter_Thread_empfangen.setBtnClicked(false, 0);
+		Getter_Setter_Thread_empfangen.setBtnClicked(false, 1);
 		
 		frame_connecten_oder_hosten = new JFrame();
 		frame_connecten_oder_hosten.setResizable(false);

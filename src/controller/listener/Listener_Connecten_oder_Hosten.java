@@ -8,9 +8,9 @@ import java.net.SocketException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import controller.getter_setter.Getter_Setter_Thread_empfangen;
 import controller.threads.Thread_empfangen;
 import controller.threads.Thread_senden;
-import view.connecten_oder_hosten.Connecten_oder_Hosten;
 import view.spieler_wird_gesucht.Spieler_wird_gesucht;
 
 public class Listener_Connecten_oder_Hosten {
@@ -26,9 +26,10 @@ public class Listener_Connecten_oder_Hosten {
 				frame.dispose();
 				
 				if(button_ausgewählt.getActionCommand() == "btnHosten") {
-					Connecten_oder_Hosten.btnClicked[0] = true;
+					Getter_Setter_Thread_empfangen.setBtnClicked(true, 0);
+				
 				}else if(button_ausgewählt.getActionCommand() == "btnConnecten") {
-					Connecten_oder_Hosten.btnClicked[1] = true;
+					Getter_Setter_Thread_empfangen.setBtnClicked(true, 1);
 				}
 				
 				Spieler_wird_gesucht fenster = new Spieler_wird_gesucht();
