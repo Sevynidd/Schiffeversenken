@@ -5,8 +5,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import controller.getter_setter.Getter_Setter_Thread_empfangen;
-
 public class Thread_senden implements Runnable {
 
 	private boolean hat_verbindung = false;
@@ -27,11 +25,10 @@ public class Thread_senden implements Runnable {
 	public void run() {
 
 		while (true) {
-			
-			if (Getter_Setter_Thread_empfangen.getBtnClicked(0) & !Getter_Setter_Thread_empfangen.getBtnClicked(1)) {
+
+			if (Thread_empfangen.getBtnClicked(0) && !Thread_empfangen.getBtnClicked(1)) {
 				
 				nachricht = "SVSearch,[1.0]";
-
 				if (!hat_verbindung) {
 					this.packet_verschicken();
 					System.out.println("Packet verschicken");
@@ -41,7 +38,9 @@ public class Thread_senden implements Runnable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			} else if (Getter_Setter_Thread_empfangen.getBtnClicked(1) & !Getter_Setter_Thread_empfangen.getBtnClicked(0)) {
+			} else if (Thread_empfangen.getBtnClicked(1) && !Thread_empfangen.getBtnClicked(0)) {
+				
+				
 				/*
 				 * Nichts tun, da er bei Thread_empfangen darauf wartet was rein kommt und
 				 * die passende Antwort sendet

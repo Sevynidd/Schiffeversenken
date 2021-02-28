@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controller.getter_setter.Getter_Setter_Thread_empfangen;
 import controller.listener.Listener_Connecten_oder_Hosten;
+import controller.threads.Thread_empfangen;
 
 public class Connecten_oder_Hosten {
 
@@ -36,8 +36,8 @@ public class Connecten_oder_Hosten {
 
 	private void initialize() {
 		
-		Getter_Setter_Thread_empfangen.setBtnClicked(false, 0);
-		Getter_Setter_Thread_empfangen.setBtnClicked(false, 1);
+		Thread_empfangen.setBtnClicked(false, 0);
+		Thread_empfangen.setBtnClicked(false, 1);
 		
 		frame_connecten_oder_hosten = new JFrame();
 		frame_connecten_oder_hosten.setResizable(false);
