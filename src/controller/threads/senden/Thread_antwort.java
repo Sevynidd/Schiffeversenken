@@ -13,7 +13,11 @@ public class Thread_antwort implements Runnable {
 
 		while (true) {
 
-			byte[] nachricht = Thread_empfangen.antwort_auf_anfrage.getBytes();
+			byte[] nachricht = null;
+			try {
+				nachricht = Thread_empfangen.antwort_auf_anfrage.getBytes();
+			} catch (NullPointerException npe) {
+			}
 			InetAddress inetAddress = Thread_empfangen.senderAdresse;
 			int port = Thread_empfangen.senderPort;
 
@@ -22,16 +26,16 @@ public class Thread_antwort implements Runnable {
 				DatagramSocket socket = new DatagramSocket();
 				socket.send(packet);
 				socket.close();
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (NullPointerException npe) {
 				continue;
 			}
-			
+
 			nachricht = null;
 			inetAddress = null;
-			
+
 		}
 
 	}
