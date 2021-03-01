@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.getter_setter.Getter_Setter_Gegner;
+
 public class Gegner {
 
 	public JFrame frame_gegner;
@@ -21,8 +23,7 @@ public class Gegner {
 	private JTextField textField_A_bis_J[];
 	private JTextField textField_0_bis_9[];
 	
-																													// JButtons
-	protected JButton button_A0_bis_J9[][];
+																													// JButton
 
 	
 	public Gegner() {
@@ -105,7 +106,7 @@ public class Gegner {
 																													// JButtons A0 bis J9
 	private void button_erstellen_A0_bis_J9() {
 		
-		button_A0_bis_J9 = new JButton[10][10];
+		JButton[][] button_A0_bis_J9 = new JButton[10][10];
 		
 		// z = Zahlen
 		for(int z=1 ; z<=10 ; z++) {
@@ -120,6 +121,10 @@ public class Gegner {
 				button_A0_bis_J9[b-1][z-1].setFont(new Font("Tahoma", Font.PLAIN, 16));
 				button_A0_bis_J9[b-1][z-1].setBackground(new Color(222,222,222));
 				frame_gegner.getContentPane().add(button_A0_bis_J9[b-1][z-1]);
+				
+				Getter_Setter_Gegner.setButton_A0_bis_J9(button_A0_bis_J9[b-1][z-1], b, z);
+				
+				
 				
 			}
 		}

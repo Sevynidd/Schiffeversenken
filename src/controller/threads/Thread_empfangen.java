@@ -12,9 +12,18 @@ public class Thread_empfangen implements Runnable {
 
 	// 0 = Hosten; 1 = Connecten
 	public static Boolean[] btnClicked = new Boolean[2];
+	
+	private Thread_antwort ta = new Thread_antwort();
+	
+	protected static String antwort_auf_anfrage;
+	protected static int senderPort;
+	protected static InetAddress senderAdresse;
+	
 
 	public Thread_empfangen(DatagramSocket datagramSocket) {
 		this.datagramSocket = datagramSocket;
+		Thread antwort = new Thread(ta);
+		antwort.start();
 	}
 
 	public void run() {
@@ -36,9 +45,9 @@ public class Thread_empfangen implements Runnable {
 
 	private void kommunikation(DatagramPacket packet) {
 		// Adresse des anderen
-		InetAddress senderAdresse = packet.getAddress();
+		senderAdresse = packet.getAddress();
 		String andereAdresse = senderAdresse.toString();
-		int senderPort = packet.getPort();
+		senderPort = packet.getPort();
 		String message = new String(packet.getData());
 
 		// meine Adresse
@@ -53,28 +62,33 @@ public class Thread_empfangen implements Runnable {
 			e.printStackTrace();
 		}
 
-		System.out.println(andereAdresse);
+		System.out.println("Meine Adresse: " + meine_ip);
+		System.out.println("Andere Adresse: " + andereAdresse);
 		// Willkommen
 		if (message.contains("SVSearch,[1.0]") && !meine_ip.contains(andereAdresse) && btnClicked[1]) {
 
 			Thread_senden.getCommunicationSender().setHat_Verbindung(true);
 			System.out.println("SVSearch,[1.0]");
-			Thread_senden.antwort_senden(senderAdresse, "SVFound", senderPort);
+			
+			antwort_auf_anfrage = "SVFound";
 		}
 
 		// Antwort
 		else if (message.contains("SVFound") && !meine_ip.contains(andereAdresse) && btnClicked[0]) {
 			Thread_senden.getCommunicationSender().setHat_Verbindung(true);
 			System.out.println("SVFound bekommen");
-			// Spiel ist starklar ... Verbindung steht....
 
-			Thread_senden.antwort_senden(senderAdresse, "SVAck", senderPort);
+			
+			antwort_auf_anfrage = "SVAck";
+			
+			
+			// TODO Kommunikation beginnen (Host)
 		}
 
 		// SVAck
 		else if (message.contains("SVAck") && !meine_ip.contains(andereAdresse) && btnClicked[1]) {
 
-			// TODO Kommunikation beginnen
+			// TODO Kommunikation beginnen (Client)
 
 		}
 	}

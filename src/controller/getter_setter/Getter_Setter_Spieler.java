@@ -10,7 +10,7 @@ public class Getter_Setter_Spieler {
 	
 
 																											// JButton A0 bis J9
-	public static JButton[][] button_A0_bis_J9 = new JButton[10][10];
+	public static JButton[][] button_A0_bis_J9_spieler = new JButton[10][10];
 																											// JRadioButtons Schiffe
 	public static JRadioButton[] RadioButton_Schiffe = new JRadioButton[4];
 	public static ButtonGroup gruppe_schiffe = new ButtonGroup();
@@ -26,11 +26,11 @@ public class Getter_Setter_Spieler {
 	
 																											// Buttons A0 bis J9
 	public static JButton getButton_A0_bis_J9(int b, int z) {
-		return button_A0_bis_J9[b][z];
+		return button_A0_bis_J9_spieler[b][z];
 	}
 
 	public static void setButton_A0_bis_J9(JButton button_A0_bis_J9, int b, int z) {
-		Getter_Setter_Spieler.button_A0_bis_J9[b][z] = button_A0_bis_J9;
+		Getter_Setter_Spieler.button_A0_bis_J9_spieler[b][z] = button_A0_bis_J9;
 	}
 																											// JRadioButtons Schiffe
 	public static JRadioButton[] getRadioButton_Schiffe() {

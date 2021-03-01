@@ -58,25 +58,11 @@ public class Thread_senden implements Runnable {
 		try {
 			Addresse = InetAddress.getByName("255.255.255.255");
 			DatagramPacket packet = new DatagramPacket(willkommens_gruﬂ, willkommens_gruﬂ.length, Addresse, PORT);
-			DatagramSocket socket = new DatagramSocket();
-			socket.setBroadcast(true);
-			socket.send(packet);
-			socket.close();
+			datagramSocket = new DatagramSocket();
+			datagramSocket.setBroadcast(true);
+			datagramSocket.send(packet);
+			datagramSocket.close();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void antwort_senden(InetAddress inetAddress, String message, int port) {
-
-		byte[] nachricht = message.getBytes();
-
-		try {
-			DatagramPacket packet = new DatagramPacket(nachricht, nachricht.length, inetAddress, port);
-			DatagramSocket socket = new DatagramSocket();
-			socket.send(packet);
-			socket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
