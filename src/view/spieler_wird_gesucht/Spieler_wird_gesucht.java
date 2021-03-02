@@ -11,6 +11,8 @@ import controller.threads.Thread_Spieler_wird_gesucht;
 
 public class Spieler_wird_gesucht {
 
+	// Diese Methode ist für die Darstellung einer Art von "Ladebalken" um eine Verbindung mit einem anderen Spieler herzustellen
+	
 	public JFrame frame_spieler_wird_gesucht;
 	private JTextField txtSpielerWirdGesucht;
 	public static JProgressBar progressBar;
