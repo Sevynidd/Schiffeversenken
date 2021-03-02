@@ -6,7 +6,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import controller.threads.senden.Thread_antwort;
+import controller.Antwort;
 import controller.threads.senden.Thread_senden;
 
 public class Thread_empfangen implements Runnable {
@@ -16,23 +16,19 @@ public class Thread_empfangen implements Runnable {
 	// 0 = Hosten; 1 = Connecten
 	public static Boolean[] btnClicked = new Boolean[2];
 
-	private Thread_antwort ta = new Thread_antwort();
-
 	private String connect_addresse;
 	private boolean connect_addresse_veränderbar = true;
 
-	public static String antwort_auf_anfrage;
-	public static int senderPort;
-	public static InetAddress senderAdresse;
+	private static String antwort_auf_anfrage;
+	private static int senderPort;
+	private static InetAddress senderAdresse;
 
-	public String message;
+	private String message;
 	private String andereAdresse;
 	private String meine_ip;
 
 	public Thread_empfangen(DatagramSocket datagramSocket) {
 		this.datagramSocket = datagramSocket;
-		Thread antwort = new Thread(ta);
-		antwort.start();
 	}
 
 	public void run() {
@@ -52,7 +48,7 @@ public class Thread_empfangen implements Runnable {
 
 	}
 
-	private void kommunikation(DatagramPacket packet) {
+	private void kommunikation(DatagramPacket packet) throws UnknownHostException {
 		// Adresse des anderen
 		senderAdresse = packet.getAddress();
 		andereAdresse = senderAdresse.toString();
@@ -86,7 +82,7 @@ public class Thread_empfangen implements Runnable {
 
 	}
 
-	private void hosten() {
+	private void hosten() throws UnknownHostException {
 
 		String connect_addresse;
 
@@ -98,11 +94,15 @@ public class Thread_empfangen implements Runnable {
 			connect_addresse = andereAdresse;
 			antwort_auf_anfrage = "SVAck";
 
+			Antwort antwort = new Antwort();
+			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse), senderPort);
+
 			// TODO Kommunikation beginnen (Host)
+
 		}
 	}
 
-	private void connecten() {
+	private void connecten() throws UnknownHostException {
 
 		// Willkommen
 		if (message.contains("SVSearch,[1.0]") && !meine_ip.contains(andereAdresse) && connect_addresse_veränderbar) {
@@ -115,10 +115,14 @@ public class Thread_empfangen implements Runnable {
 			System.out.println("SVSearch,[1.0]");
 
 			antwort_auf_anfrage = "SVFound";
+
+			Antwort antwort = new Antwort();
+			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse), senderPort);
 		}
 
 		// SVAck
-		else if (message.contains("SVAck") && !meine_ip.contains(andereAdresse) && andereAdresse.contains(connect_addresse)) {
+		else if (message.contains("SVAck") && !meine_ip.contains(andereAdresse)
+				&& andereAdresse.contains(connect_addresse)) {
 
 			// TODO Kommunikation beginnen (Client)
 

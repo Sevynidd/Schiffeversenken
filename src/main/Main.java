@@ -9,6 +9,8 @@ import view.fenster.Spieler;
 
 public class Main {
 
+	// Starten des Programms und Festlegen des LookAndFeels
+	
 	public static void main(String[] args) {
 		try {
 
