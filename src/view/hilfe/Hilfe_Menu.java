@@ -14,6 +14,9 @@ import javax.swing.JTextArea;
 
 public class Hilfe_Menu {
 
+	// Ein Hilfefenster, welches über die Menubar geöffnet werden kann. 
+	// Sie erklärt wie man Schiffe platzieren kann
+	
 	private JFrame hilfe_fenster;
 	private int width = 780;
 	private int highth = 400;
