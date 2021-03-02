@@ -24,6 +24,7 @@ import view.hilfe.Hilfe_Menu;
 
 public class Spieler {
 
+	// JFrame
 	public JFrame frame_spieler;
 
 	private String[] buchstaben = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
@@ -46,7 +47,8 @@ public class Spieler {
 
 	
 	private void initialize() {
-																												// JFrame
+		
+		// JFrame
 		frame_spieler = new JFrame();
 		frame_spieler.setTitle("Spieler");
 		try {
@@ -144,14 +146,14 @@ public class Spieler {
 		
 		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Kreuzer, 1);
 		
-																												// JRadioButton Zerstörer
-		JRadioButton RadioButton_Zerstörer = new JRadioButton("");
-		RadioButton_Zerstörer.setActionCommand("Zerst\u00F6rer");
-		RadioButton_Zerstörer.setHorizontalAlignment(SwingConstants.CENTER);
-		RadioButton_Zerstörer.setBounds(721, 220, 25, 25);
-		frame_spieler.getContentPane().add(RadioButton_Zerstörer);
+																												// JRadioButton ZerstÃ¶rer
+		JRadioButton RadioButton_ZerstÃ¶rer = new JRadioButton("");
+		RadioButton_ZerstÃ¶rer.setActionCommand("Zerst\u00F6rer");
+		RadioButton_ZerstÃ¶rer.setHorizontalAlignment(SwingConstants.CENTER);
+		RadioButton_ZerstÃ¶rer.setBounds(721, 220, 25, 25);
+		frame_spieler.getContentPane().add(RadioButton_ZerstÃ¶rer);
 		
-		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_Zerstörer, 2);
+		Getter_Setter_Spieler.setRadioButton_Schiffe(RadioButton_ZerstÃ¶rer, 2);
 		
 																												// JRadioButton U-Boot
 		JRadioButton RadioButton_UBoot = new JRadioButton("");
@@ -166,7 +168,7 @@ public class Spieler {
 		ButtonGroup gruppe_schiffe = new ButtonGroup();
 		gruppe_schiffe.add(RadioButton_Schlachtschiff);
 		gruppe_schiffe.add(RadioButton_Kreuzer);
-		gruppe_schiffe.add(RadioButton_Zerstörer);
+		gruppe_schiffe.add(RadioButton_ZerstÃ¶rer);
 		gruppe_schiffe.add(RadioButton_UBoot);
 		
 		Getter_Setter_Spieler.setGruppe_schiffe(gruppe_schiffe);
@@ -197,7 +199,7 @@ public class Spieler {
 		
 		Getter_Setter_Spieler.setRadioButton_Horizontal_Vertikal(RadioButton_Vertikal, 1);
 	
-		// Damit die RadioButtons automatisch abgewählt werden, wenn ein anderer gewählt ist
+		// Damit die RadioButtons automatisch abgewÃ¤hlt werden, wenn ein anderer gewÃ¤hlt ist
 		
 		ButtonGroup gruppe_hor_vert = new ButtonGroup();
 		gruppe_hor_vert.add(RadioButton_Horizontal);
@@ -243,7 +245,7 @@ public class Spieler {
 		
 		JTextField textField_Anzahl_Schlachtschiff;
 		JTextField textField_Anzahl_Kreuzer;
-		JTextField textField_Anzahl_Zerstörer;
+		JTextField textField_Anzahl_ZerstÃ¶rer;
 		JTextField textField_Anzahl_UBoot;
 		
 																													// JTextField Schlachtschiff
@@ -271,18 +273,18 @@ public class Spieler {
 	    
 	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Kreuzer, 1);
 	    
-	    																											// JTextField Zerstörer
-	    textField_Anzahl_Zerstörer = new JTextField();
-	    textField_Anzahl_Zerstörer.setEditable(false);
-	    textField_Anzahl_Zerstörer.setFocusable(false);
-	    textField_Anzahl_Zerstörer.setText("3");
-	    textField_Anzahl_Zerstörer.setHorizontalAlignment(SwingConstants.CENTER);
-	    textField_Anzahl_Zerstörer.setFont(new Font("Tahoma", Font.PLAIN, 12));
-	    textField_Anzahl_Zerstörer.setColumns(10);
-	    textField_Anzahl_Zerstörer.setBounds(525, 220, 50, 25);
-	    frame_spieler.getContentPane().add(textField_Anzahl_Zerstörer);
+	    																											// JTextField ZerstÃ¶rer
+	    textField_Anzahl_ZerstÃ¶rer = new JTextField();
+	    textField_Anzahl_ZerstÃ¶rer.setEditable(false);
+	    textField_Anzahl_ZerstÃ¶rer.setFocusable(false);
+	    textField_Anzahl_ZerstÃ¶rer.setText("3");
+	    textField_Anzahl_ZerstÃ¶rer.setHorizontalAlignment(SwingConstants.CENTER);
+	    textField_Anzahl_ZerstÃ¶rer.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    textField_Anzahl_ZerstÃ¶rer.setColumns(10);
+	    textField_Anzahl_ZerstÃ¶rer.setBounds(525, 220, 50, 25);
+	    frame_spieler.getContentPane().add(textField_Anzahl_ZerstÃ¶rer);
 	    
-	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_Zerstörer, 2);
+	    Getter_Setter_Spieler.setTextField_Anzahl_Schiffe(textField_Anzahl_ZerstÃ¶rer, 2);
 	    
 	    																											// JTextField UBoot
 	    textField_Anzahl_UBoot = new JTextField();
@@ -321,7 +323,7 @@ public class Spieler {
 		txtKreuzer.setColumns(10);
 		txtKreuzer.setBounds(585, 185, 130, 25);
 		frame_spieler.getContentPane().add(txtKreuzer);
-																													// JTextField Zerstörer
+																													// JTextField ZerstÃ¶rer
 		txtZerstrer = new JTextField();
 		txtZerstrer.setEditable(false);
 		txtZerstrer.setText("Zerst\u00F6rer (3)");
