@@ -18,7 +18,7 @@ public class Connecten_oder_Hosten {
 	
 	private JTextField txtConnectenOderHosten;
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		// TODO main nachher löschen (ist nur zum testen)
 		try {
 			Connecten_oder_Hosten window = new Connecten_oder_Hosten();
