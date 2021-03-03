@@ -1,0 +1,1 @@
+Dieses Packet enthält alle Getter_Setter.java Files, um static in den normalen Methoden zu verhindern.
