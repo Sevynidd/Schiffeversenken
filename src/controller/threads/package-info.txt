@@ -1,0 +1,2 @@
+In diesem Packet befinden sich alle Threads und auch alles was mit den Treads zu tun hat wie 
+Antwort.java, welche direkt von einem Thread aufgerufen wird nur um eine Antwort zu senden.
