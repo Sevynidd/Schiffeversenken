@@ -1,0 +1,5 @@
+In diesem Packet befinden sich alle Dateien die mit der View zu tun haben, also alles,
+was einen JFrame öffnen kann.
+
+Sie enthalten wirklich nur die Struktur des Overlays und keine Rechenoperationen oder sonstiges.
+Das wird dann alles im Controller-packet geregelt.
