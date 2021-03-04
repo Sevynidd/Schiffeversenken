@@ -1,2 +1,0 @@
-In diesem Packet befindet sich alles, was mit dem Spielablauf zutun hat.
-D.h. die Komunikation durch BufferedReader/BufferedWriter, als auch den Spielablauf an sich.
