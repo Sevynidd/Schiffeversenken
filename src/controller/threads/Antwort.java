@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Antwort {
 
@@ -14,16 +15,26 @@ public class Antwort {
 				nachricht = antwort_auf_anfrage.getBytes();
 			} catch (NullPointerException npe) {
 			}
-			InetAddress inetAddress = senderAdresse;
+			//InetAddress inetAddress = senderAdresse;
+			
+			InetAddress inetAddress = null;
+			
+			try {
+				inetAddress = InetAddress.getByName("255.255.255.255");
+			} catch (UnknownHostException e1) {
+				e1.printStackTrace();
+			}
+			
 			int port = senderPort;
 
 			try {
 				DatagramPacket packet = new DatagramPacket(nachricht, nachricht.length, inetAddress, port);
 				DatagramSocket socket = new DatagramSocket();
+				socket.setBroadcast(true);
 				socket.send(packet);
 				socket.close();
 				
-				System.out.println(antwort_auf_anfrage +" gesendet");
+				System.out.println(antwort_auf_anfrage + " gesendet an " + senderAdresse);
 
 			} catch (IOException e) {
 				e.printStackTrace();
