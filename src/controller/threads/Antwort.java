@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 
 public class Antwort {
 
-	public void antwort_senden(String antwort_auf_anfrage, InetAddress senderAdresse, int senderPort) {
+	public void antwort_senden(String antwort_auf_anfrage, InetAddress senderAdresse) {
 
 			byte[] nachricht = null;
 			try {
@@ -25,7 +25,7 @@ public class Antwort {
 				e1.printStackTrace();
 			}
 			
-			int port = senderPort;
+			int port = 42069;
 
 			try {
 				DatagramPacket packet = new DatagramPacket(nachricht, nachricht.length, inetAddress, port);

@@ -98,13 +98,12 @@ public class Thread_empfangen implements Runnable {
 
 			System.out.println("test " + connect_addresse);
 			Antwort antwort = new Antwort();
-			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse),
-					Getter_Setter_Thread_empfangen.getSenderPort());
+			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse));
 
 			Getter_Setter_Spieler_wird_gesucht.getTxtSpielerWirdGesucht().setText("Spieler gefunden ...");
 
 			try {
-				Thread.sleep(200); // 2sek warten
+				Thread.sleep(2000); // 2sek warten
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -132,8 +131,7 @@ public class Thread_empfangen implements Runnable {
 			String antwort_auf_anfrage = "SVFound";
 
 			Antwort antwort = new Antwort();
-			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse),
-					Getter_Setter_Thread_empfangen.getSenderPort());
+			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse));
 		}
 
 		// SVAck

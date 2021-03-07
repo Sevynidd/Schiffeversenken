@@ -37,46 +37,23 @@ public class Listener_Connecten_oder_Hosten {
 				Spieler_wird_gesucht swg = new Spieler_wird_gesucht();
 				Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().setVisible(true);
 
-				if (button_ausgewählt.getActionCommand().equals("btnHosten")) {
+				try {
 
-					try {
+					DatagramSocket socket = new DatagramSocket(Thread_senden.PORT);
+					Getter_Setter_Listener_Connecten_oder_Hosten.setSocket(socket);
 
-						DatagramSocket socket = new DatagramSocket(Thread_senden.PORT);
-						Getter_Setter_Listener_Connecten_oder_Hosten.setSocket(socket);
-
-					} catch (SocketException e) {
-						e.printStackTrace();
-					}
-
-					Thread_senden.getCommunicationSender()
-							.setDatagramSocket(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket());
-
-					Thread sender_Thread = new Thread(Thread_senden.getCommunicationSender());
-					sender_Thread.start();
-					Thread empfänger_Thread = new Thread(
-							new Thread_empfangen(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket()));
-					empfänger_Thread.start();
-
-				} else if (button_ausgewählt.getActionCommand().equals("btnConnecten")) {
-
-					try {
-						DatagramSocket socket = new DatagramSocket(Thread_senden.PORT);
-						Getter_Setter_Listener_Connecten_oder_Hosten.setSocket(socket);
-
-					} catch (SocketException e) {
-						e.printStackTrace();
-					}
-
-					Thread_senden.getCommunicationSender()
-							.setDatagramSocket(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket());
-
-					Thread sender_Thread = new Thread(Thread_senden.getCommunicationSender());
-					sender_Thread.start();
-					Thread empfänger_Thread = new Thread(
-							new Thread_empfangen(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket()));
-					empfänger_Thread.start();
-
+				} catch (SocketException e) {
+					e.printStackTrace();
 				}
+
+				Thread_senden.getCommunicationSender()
+						.setDatagramSocket(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket());
+
+				Thread sender_Thread = new Thread(Thread_senden.getCommunicationSender());
+				sender_Thread.start();
+				Thread empfänger_Thread = new Thread(
+						new Thread_empfangen(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket()));
+				empfänger_Thread.start();
 
 			}
 
