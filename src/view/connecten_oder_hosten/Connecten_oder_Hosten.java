@@ -18,16 +18,6 @@ public class Connecten_oder_Hosten {
 	
 	private JTextField txtConnectenOderHosten;
 
-	public static void main(String[] args) {
-		// TODO main nachher löschen (ist nur zum testen)
-		try {
-			Connecten_oder_Hosten window = new Connecten_oder_Hosten();
-			window.frame_connecten_oder_hosten.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public Connecten_oder_Hosten() {
 		initialize();
 	}

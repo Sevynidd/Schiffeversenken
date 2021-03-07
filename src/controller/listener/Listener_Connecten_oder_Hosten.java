@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import controller.getter_setter.listnener.Getter_Setter_Listener_Connecten_oder_Hosten;
+import controller.getter_setter.threads.Getter_Setter_Thread_beenden;
 import controller.getter_setter.threads.Getter_Setter_Thread_empfangen;
 import controller.getter_setter.view.Getter_Setter_Spieler_wird_gesucht;
 import controller.threads.empfangen.Thread_empfangen;
@@ -31,12 +32,14 @@ public class Listener_Connecten_oder_Hosten {
 				} else if (button_ausgewählt.getActionCommand() == "btnConnecten") {
 					Getter_Setter_Thread_empfangen.setBtnClicked(true, 1);
 				}
+				
+				Getter_Setter_Thread_beenden.setBeenden(false);
 
 				// Um die view zu öffnen
 				@SuppressWarnings("unused")
 				Spieler_wird_gesucht swg = new Spieler_wird_gesucht();
 				Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().setVisible(true);
-
+				
 				try {
 
 					DatagramSocket socket = new DatagramSocket(Thread_senden.PORT);

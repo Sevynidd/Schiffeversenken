@@ -125,6 +125,8 @@ public class Spieler {
 	}
 
 	private void buttons_Auswahl_Schiffe() {
+		
+		// Welche Schiffsart ist ausgewählt?
 			
 																												// JRadioButton Schlachtschiff
 		JRadioButton RadioButton_Schlachtschiff = new JRadioButton("");
@@ -178,6 +180,8 @@ public class Spieler {
 
 																							
 	private void erstellen_radioButtons() {
+		
+		// Erstellen der Horizontal und Verktikal Auswahlbuttons
 	
 																												// JRadioButton Horizontal
 		JRadioButton RadioButton_Horizontal = new JRadioButton("Horizontal");
@@ -240,6 +244,8 @@ public class Spieler {
 	}
 
 	private void text_Anzahl_Schiffe() {
+		
+		// Wie viele Schiffe gibt es noch insgesamt von jeder Art?
 		
 		JTextField textField_Anzahl_Schlachtschiff;
 		JTextField textField_Anzahl_Kreuzer;
@@ -345,6 +351,9 @@ public class Spieler {
 	}
 	
 	private void hinweis_textfeld() {
+		
+		// Textfeld mit Hinweisen
+		// Z.B. das die schiffe an einer bestimmten stelle nicht platzierbar sind
 																													// JTextArea Hinweis
 		JTextArea textArea_hinweis = new JTextArea();
 		textArea_hinweis.setWrapStyleWord(true);
@@ -363,6 +372,8 @@ public class Spieler {
 	}
 	
 	private void menu_erstellen() {
+		
+		// Menu erstellen über welches man den Hilfe JFrame öffnen kann
 		
 		JMenuBar mb = new JMenuBar();
 		

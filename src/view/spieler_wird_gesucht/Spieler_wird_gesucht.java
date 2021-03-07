@@ -48,6 +48,8 @@ public class Spieler_wird_gesucht {
 		
 		Getter_Setter_Spieler_wird_gesucht.setTxtSpielerWirdGesucht(txtSpielerWirdGesucht);
 		
+		
+		
 		Thread_Spieler_wird_gesucht swg = new Thread_Spieler_wird_gesucht();
 		Thread spieler_wird_gesucht = new Thread(swg);
 		spieler_wird_gesucht.start();

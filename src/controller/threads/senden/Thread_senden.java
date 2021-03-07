@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+import controller.getter_setter.threads.Getter_Setter_Thread_beenden;
 import controller.getter_setter.threads.Getter_Setter_Thread_empfangen;
 
 public class Thread_senden implements Runnable {
@@ -26,7 +27,7 @@ public class Thread_senden implements Runnable {
 
 	public void run() {
 
-		while (true) {
+		while (!Getter_Setter_Thread_beenden.isBeenden()) {
 
 			if (Getter_Setter_Thread_empfangen.getBtnClicked(0) && !Getter_Setter_Thread_empfangen.getBtnClicked(1)) {
 

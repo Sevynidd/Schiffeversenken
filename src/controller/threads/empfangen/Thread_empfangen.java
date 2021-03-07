@@ -6,8 +6,10 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import controller.getter_setter.threads.Getter_Setter_Thread_beenden;
 import controller.getter_setter.threads.Getter_Setter_Thread_empfangen;
 import controller.getter_setter.view.Getter_Setter_Spieler_wird_gesucht;
+import controller.spielablauf.Verbindungsaufbau;
 import controller.threads.Antwort;
 import controller.threads.senden.Thread_senden;
 
@@ -27,7 +29,7 @@ public class Thread_empfangen implements Runnable {
 	}
 
 	public void run() {
-		while (true) {
+		while (!Getter_Setter_Thread_beenden.isBeenden()) {
 			DatagramPacket datagramPacket = new DatagramPacket(new byte[512], 512);
 			try {
 				this.datagramSocket.receive(datagramPacket);
@@ -96,9 +98,10 @@ public class Thread_empfangen implements Runnable {
 			String antwort_auf_anfrage = "SVAck";
 			Getter_Setter_Thread_empfangen.setAntwort_auf_anfrage(antwort_auf_anfrage);
 
-			System.out.println("test " + connect_addresse);
+			
 			Antwort antwort = new Antwort();
-			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse));
+			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse),
+					Getter_Setter_Thread_empfangen.getSenderPort());
 
 			Getter_Setter_Spieler_wird_gesucht.getTxtSpielerWirdGesucht().setText("Spieler gefunden ...");
 
@@ -111,7 +114,11 @@ public class Thread_empfangen implements Runnable {
 			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().setVisible(false);
 			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().dispose();
 
+			Getter_Setter_Thread_beenden.setBeenden(true);
+			
 			// TODO Kommunikation beginnen (Host)
+			
+			Verbindungsaufbau vab = new Verbindungsaufbau();	
 
 		}
 	}
@@ -131,14 +138,32 @@ public class Thread_empfangen implements Runnable {
 			String antwort_auf_anfrage = "SVFound";
 
 			Antwort antwort = new Antwort();
-			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse));
+			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse),
+					Getter_Setter_Thread_empfangen.getSenderPort());
 		}
 
 		// SVAck
 		else if (message.contains("SVAck") && !meine_ip.contains(andereAdresse)
 				&& andereAdresse.contains(connect_addresse)) {
 
+			System.out.println("SVAck bekommen");
+			
+			Getter_Setter_Spieler_wird_gesucht.getTxtSpielerWirdGesucht().setText("Spieler gefunden ...");
+
+			try {
+				Thread.sleep(2000); // 2sek warten
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().setVisible(false);
+			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().dispose();
+
+			Getter_Setter_Thread_beenden.setBeenden(true);
+			
 			// TODO Kommunikation beginnen (Client)
+			
+			Verbindungsaufbau vab = new Verbindungsaufbau();
 
 		}
 	}
