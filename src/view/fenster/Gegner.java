@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.getter_setter.view.Getter_Setter_Gegner;
+import controller.listener.Listener_Gegner;
 
 public class Gegner {
 
@@ -47,6 +48,9 @@ public class Gegner {
 		frame_gegner.setBounds(1000, 100, 500, 500);
 		frame_gegner.setResizable(false);
 		frame_gegner.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
+		Getter_Setter_Gegner.setSpieler_suche_beendet(false);
 
 		felder_erstellen_A_bis_J();
 		felder_erstellen_0_bis_9();
@@ -130,7 +134,7 @@ public class Gegner {
 				
 				Getter_Setter_Gegner.setButton_A0_bis_J9(button_A0_bis_J9[b-1][z-1], b-1, z-1);
 				
-				
+				Listener_Gegner.buttonListener_spieler(button_A0_bis_J9[b-1][z-1]);
 				
 			}
 		}

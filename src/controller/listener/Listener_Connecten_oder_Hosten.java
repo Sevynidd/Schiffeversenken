@@ -16,6 +16,8 @@ import controller.threads.senden.Thread_senden;
 import view.spieler_wird_gesucht.Spieler_wird_gesucht;
 
 public class Listener_Connecten_oder_Hosten {
+	
+	public static DatagramSocket socket;
 
 	public static void buttonListener_Connecten_oder_Hosten(JButton button_ausgewählt, JFrame frame) {
 		button_ausgewählt.addMouseListener(new MouseAdapter() {
@@ -43,7 +45,7 @@ public class Listener_Connecten_oder_Hosten {
 				try {
 
 					// DatagramSocket öffnen
-					DatagramSocket socket = new DatagramSocket(Thread_senden.PORT);
+					socket = new DatagramSocket(Thread_senden.PORT);
 					Getter_Setter_Listener_Connecten_oder_Hosten.setSocket(socket);
 
 				} catch (SocketException e) {

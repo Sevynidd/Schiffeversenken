@@ -17,9 +17,11 @@ public class Thread_Spieler_wird_gesucht implements Runnable {
 
 		while (true) {
 			while (value <= 100) {
+				
+				value += 1;
+				
 				gsswg.getProgressBar().setValue(value);
 
-				value += 1;
 
 				try {
 					Thread.sleep(25);
