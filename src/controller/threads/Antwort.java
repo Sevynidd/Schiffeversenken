@@ -7,6 +7,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class Antwort {
+	
+	// Hier werden immer die Antworten wie SVFound und SVAck verschickt
 
 	public void antwort_senden(String antwort_auf_anfrage, InetAddress senderAdresse, int senderPort) {
 

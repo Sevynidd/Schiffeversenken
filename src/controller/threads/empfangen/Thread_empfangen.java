@@ -16,10 +16,12 @@ public class Thread_empfangen implements Runnable {
 
 	private DatagramSocket datagramSocket;
 
+	// Die Adresse desjenigen, welcher mir ein SVFound geschickt hat
 	private String connect_addresse;
 	private boolean connect_addresse_veränderbar = true;
 
 	private String message;
+	// Die Adresse welche ich rein bekomme (welche nicht meine eigene sein sollte)
 	private String andereAdresse;
 	private String meine_ip;
 
@@ -45,7 +47,8 @@ public class Thread_empfangen implements Runnable {
 	}
 
 	private void kommunikation(DatagramPacket packet) throws UnknownHostException {
-		// Adresse des anderen
+
+		// Adresse des senders
 		InetAddress senderAdresse = packet.getAddress();
 
 		Getter_Setter_Thread_empfangen.setSenderAdresse(senderAdresse);
@@ -87,52 +90,45 @@ public class Thread_empfangen implements Runnable {
 
 	private void hosten() throws UnknownHostException {
 
-		// Antwort
+		// Antwort SVFound => Senden SVAck
 		if (message.contains("SVFound") && !meine_ip.contains(andereAdresse)) {
 			Thread_senden.getCommunicationSender().setHat_Verbindung(true);
 			System.out.println("SVFound bekommen");
 
-			connect_addresse = andereAdresse.substring(1,andereAdresse.length());
-			
+			// Verhindern von "//"192.168.xxx.xxx
+			connect_addresse = andereAdresse.substring(1, andereAdresse.length());
+
 			String antwort_auf_anfrage = "SVAck";
 			Getter_Setter_Thread_empfangen.setAntwort_auf_anfrage(antwort_auf_anfrage);
 
-			
+			// Antwort senden
 			Antwort antwort = new Antwort();
 			antwort.antwort_senden(antwort_auf_anfrage, InetAddress.getByName(connect_addresse),
 					Getter_Setter_Thread_empfangen.getSenderPort());
 
+			// Text ändern
 			Getter_Setter_Spieler_wird_gesucht.getTxtSpielerWirdGesucht().setText("Spieler gefunden ...");
 
-			try {
-				Thread.sleep(2000); // 2sek warten
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().setVisible(false);
-			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().dispose();
-
+			// Threads beenden auf true setzen
 			Getter_Setter_Thread_beenden.setBeenden(true);
-			
-			// TODO Kommunikation beginnen (Host)
-			
-			Getter_Setter_Thread_empfangen.setThreads_aktiv(false);	
+
+			// Spielen Button true setzen, um die Kommunikation des Spiels zu starten
+			Getter_Setter_Spieler_wird_gesucht.getBtnSpielen().setVisible(true);
 
 		}
 	}
 
 	private void connecten() throws UnknownHostException {
 
-		// Willkommen
+		// Antwort SVSearch => Senden SVFound
 		if (message.contains("SVSearch,[1.0]") && !meine_ip.contains(andereAdresse) && connect_addresse_veränderbar) {
 
-			connect_addresse = andereAdresse.substring(1,andereAdresse.length());
+			connect_addresse = andereAdresse.substring(1, andereAdresse.length());
 
 			connect_addresse_veränderbar = false;
 
 			Thread_senden.getCommunicationSender().setHat_Verbindung(true);
-			System.out.println("SVSearch,[1.0]");
+			System.out.println("SVSearch,[1.0] bekommen");
 
 			String antwort_auf_anfrage = "SVFound";
 
@@ -141,28 +137,20 @@ public class Thread_empfangen implements Runnable {
 					Getter_Setter_Thread_empfangen.getSenderPort());
 		}
 
-		// SVAck
+		// Antwort SVAck
 		else if (message.contains("SVAck") && !meine_ip.contains(andereAdresse)
 				&& andereAdresse.contains(connect_addresse)) {
 
 			System.out.println("SVAck bekommen");
-			
+
+			// Text ändern
 			Getter_Setter_Spieler_wird_gesucht.getTxtSpielerWirdGesucht().setText("Spieler gefunden ...");
 
-			try {
-				Thread.sleep(2000); // 2sek warten
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().setVisible(false);
-			Getter_Setter_Spieler_wird_gesucht.getFrame_spieler_wird_gesucht().dispose();
-
+			// Threads beenden auf true setzen
 			Getter_Setter_Thread_beenden.setBeenden(true);
-			
-			// TODO Kommunikation beginnen (Client)
-			
-			Getter_Setter_Thread_empfangen.setThreads_aktiv(false);
+
+			// Spielen Button true setzen, um die Kommunikation des Spiels zu starten
+			Getter_Setter_Spieler_wird_gesucht.getBtnSpielen().setVisible(true);
 
 		}
 	}

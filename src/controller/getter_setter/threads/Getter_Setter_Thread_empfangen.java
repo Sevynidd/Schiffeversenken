@@ -10,8 +10,6 @@ public class Getter_Setter_Thread_empfangen {
 	private static String antwort_auf_anfrage;
 	private static int senderPort;
 	private static InetAddress senderAdresse;
-	
-	private static boolean threads_aktiv;
 
 	public static Boolean getBtnClicked(int zahl) {
 		return btnClicked[zahl];
@@ -43,14 +41,6 @@ public class Getter_Setter_Thread_empfangen {
 
 	public static void setSenderAdresse(InetAddress senderAdresse) {
 		Getter_Setter_Thread_empfangen.senderAdresse = senderAdresse;
-	}
-
-	public static boolean isThreads_aktiv() {
-		return threads_aktiv;
-	}
-
-	public static void setThreads_aktiv(boolean threads_aktiv) {
-		Getter_Setter_Thread_empfangen.threads_aktiv = threads_aktiv;
 	}
 
 }

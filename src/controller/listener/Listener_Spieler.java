@@ -17,6 +17,7 @@ public class Listener_Spieler {
 
 			public void mouseClicked(MouseEvent cursor) {
 
+				// Anzahl aller Schiffe erstmal 0 setzen
 				Getter_Setter_Listener_Spieler.setSchiff_anzahl_insgesamt(0);
 
 				// Schiffe insgesamt
@@ -24,17 +25,25 @@ public class Listener_Spieler {
 
 					int gsai = Getter_Setter_Listener_Spieler.getSchiff_anzahl_insgesamt();
 
+					// Auslesen was in den Textfeldern steht wie viele Schiffe noch übrig sind
 					Getter_Setter_Listener_Spieler.setSchiff_anzahl_insgesamt(
 							gsai += Integer.parseInt(Getter_Setter_Spieler.getTextField_Anzahl_Schiffe()[i].getText()));
 				}
 
+				// Hinweis Text setzen und Hintergrund färben
 				Getter_Setter_Spieler.getTextField_hinweis().setText(Getter_Setter_Listener_Spieler.getHinweis_text());
 				Getter_Setter_Spieler.getTextField_hinweis().setBackground(new Color(222, 222, 222));
 
+				// Welches Feld ist ausgewählt? Buchstabe und Zahl
 				Getter_Setter_Listener_Spieler
 						.setBuchstabe(Integer.parseInt(button_ausgewählt.getActionCommand().split(" ")[0]));
 				Getter_Setter_Listener_Spieler
 						.setZahl(Integer.parseInt(button_ausgewählt.getActionCommand().split(" ")[1]));
+
+				/*
+				 * Ab hier kommt ein großer switch:case Sollen die Schiffe Horizontal oder
+				 * Vertikal platziert werden und wenn Horizontal, dann welche Schiffsart?
+				 */
 
 				switch (Getter_Setter_Spieler.getGruppe_hor_vert().getSelection().getActionCommand()) {
 
@@ -47,8 +56,11 @@ public class Listener_Spieler {
 						Getter_Setter_Listener_Spieler.setSchiff(0);
 						Getter_Setter_Listener_Spieler.setSchifflänge(5);
 
+						// Testen ob in der Nähe ein Schiff liegt. Wenn nein: dann true
 						if (test_horizontal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
+
+							// Dann wird das Schiff platziert und der Hintergrund gefärbt
 							horizontal(Getter_Setter_Listener_Spieler.getSchiff(),
 									Getter_Setter_Listener_Spieler.getSchifflänge());
 						}
@@ -278,6 +290,8 @@ public class Listener_Spieler {
 			}
 
 		}
+		
+		// Wenn es keine Schiffe mehr gibt:
 
 		if (Getter_Setter_Listener_Spieler.getSchiff_anzahl_insgesamt() == 0) {
 
