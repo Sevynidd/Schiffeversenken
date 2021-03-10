@@ -83,7 +83,7 @@ public class Thread_BufferedReader implements Runnable {
 					boolean break_variable = false;
 					boolean schiff_zerstört = false;
 					int counter = 0;
-
+					
 					for (int j = 0; j <= 10; j++) {
 
 						for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
