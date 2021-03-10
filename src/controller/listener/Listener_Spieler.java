@@ -12,6 +12,8 @@ import view.connecten_oder_hosten.Connecten_oder_Hosten;
 
 public class Listener_Spieler {
 
+	public static int id;
+
 	public static void buttonListener_spieler(JButton button_ausgewählt) {
 		button_ausgewählt.addMouseListener(new MouseAdapter() {
 
@@ -55,6 +57,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(0);
 						Getter_Setter_Listener_Spieler.setSchifflänge(5);
+						Getter_Setter_Spieler.setId_laenge(id, 5);
 
 						// Testen ob in der Nähe ein Schiff liegt. Wenn nein: dann true
 						if (test_horizontal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
@@ -71,6 +74,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(1);
 						Getter_Setter_Listener_Spieler.setSchifflänge(4);
+						Getter_Setter_Spieler.setId_laenge(id, 4);
 
 						if (test_horizontal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -84,6 +88,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(2);
 						Getter_Setter_Listener_Spieler.setSchifflänge(3);
+						Getter_Setter_Spieler.setId_laenge(id, 3);
 
 						if (test_horizontal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -97,6 +102,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(3);
 						Getter_Setter_Listener_Spieler.setSchifflänge(2);
+						Getter_Setter_Spieler.setId_laenge(id, 2);
 
 						if (test_horizontal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -118,6 +124,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(0);
 						Getter_Setter_Listener_Spieler.setSchifflänge(5);
+						Getter_Setter_Spieler.setId_laenge(id, 5);
 
 						if (test_vertikal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -131,6 +138,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(1);
 						Getter_Setter_Listener_Spieler.setSchifflänge(4);
+						Getter_Setter_Spieler.setId_laenge(id, 4);
 
 						if (test_vertikal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -144,6 +152,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(2);
 						Getter_Setter_Listener_Spieler.setSchifflänge(3);
+						Getter_Setter_Spieler.setId_laenge(id, 3);
 
 						if (test_vertikal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -157,6 +166,7 @@ public class Listener_Spieler {
 
 						Getter_Setter_Listener_Spieler.setSchiff(3);
 						Getter_Setter_Listener_Spieler.setSchifflänge(2);
+						Getter_Setter_Spieler.setId_laenge(id, 2);
 
 						if (test_vertikal_schiff_in_der_nähe(Getter_Setter_Listener_Spieler.getSchiff(),
 								Getter_Setter_Listener_Spieler.getSchifflänge())) {
@@ -256,6 +266,13 @@ public class Listener_Spieler {
 											.getButton_A0_bis_J9(farbe_komplett,
 													Getter_Setter_Listener_Spieler.getZahl())
 											.setBackground(Color.decode("#98FB98"));
+
+									Getter_Setter_Spieler.setId_true_false(id, i, false);
+
+									Getter_Setter_Spieler.setId_koordinaten(id, i,
+											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe()
+													+ Getter_Setter_Listener_Spieler.getZahl()));
+
 								}
 							}
 
@@ -290,7 +307,7 @@ public class Listener_Spieler {
 			}
 
 		}
-		
+
 		// Wenn es keine Schiffe mehr gibt:
 
 		if (Getter_Setter_Listener_Spieler.getSchiff_anzahl_insgesamt() == 0) {
@@ -299,6 +316,8 @@ public class Listener_Spieler {
 			window.frame_connecten_oder_hosten.setVisible(true);
 
 		}
+
+		id += 1;
 
 	}
 
@@ -379,6 +398,12 @@ public class Listener_Spieler {
 											.getButton_A0_bis_J9(Getter_Setter_Listener_Spieler.getBuchstabe(),
 													farbe_komplett)
 											.setBackground(Color.decode("#98FB98"));
+
+									Getter_Setter_Spieler.setId_true_false(id, i, false);
+
+									Getter_Setter_Spieler.setId_koordinaten(id, i,
+											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe()
+													+ Getter_Setter_Listener_Spieler.getZahl()));
 								}
 							}
 
@@ -421,6 +446,7 @@ public class Listener_Spieler {
 
 		}
 
+		id += 1;
 	}
 
 }

@@ -47,8 +47,6 @@ public class Thread_BufferedReader implements Runnable {
 				char buchstabe = nachricht.charAt(6);
 				char zahl = nachricht.charAt(10);
 
-				System.out.println(buchstabe + " " + zahl);
-
 				koordinaten[0] = String.valueOf(buchstabe);
 				koordinaten[1] = String.valueOf(zahl);
 
@@ -61,6 +59,8 @@ public class Thread_BufferedReader implements Runnable {
 					}
 				}
 
+				String komplette_koordinaten = buchstaben[index_buchstaben] + zahl;
+
 				// Hit
 				if (Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
 						.getText().contains("X")) {
@@ -68,27 +68,71 @@ public class Thread_BufferedReader implements Runnable {
 					anzahl_an_schiffteilen -= 1;
 
 					if (anzahl_an_schiffteilen == 0) {
-						
+
 						Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
-						.setBackground(Color.BLACK);
-						
+								.setBackground(Color.BLACK);
+
 						Verbindungsaufbau.nachricht_bufferedWriter = "DestroyedLastShip,["
 								+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
 
 						System.out.println("Spiel verloren");
 
-						//TODO JFrame öffnen: Verloren
+						// TODO JFrame öffnen: Verloren
 					}
 
-					Verbindungsaufbau.nachricht_bufferedWriter = "Hit,[" + buchstaben[index_buchstaben] + "],["
-							+ koordinaten[1] + "]";
+					boolean break_variable = false;
+					boolean schiff_zerstört = false;
+					int counter = 0;
 
-					Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
-							.setBackground(Color.BLACK);
+					for (int j = 0; j <= 10; j++) {
 
-					Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
+						for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
 
-				// Miss
+							if (Getter_Setter_Spieler.getId_koordinaten(j, k).equals(komplette_koordinaten)) {
+
+								Getter_Setter_Spieler.setId_true_false(j, k, true);
+
+							}
+
+							if (Boolean.valueOf(Getter_Setter_Spieler.getId_true_false(j, k))) {
+								counter += 1;
+							}
+
+							if (j == 10 && k < Getter_Setter_Spieler.getId_laenge().get(j)
+									&& counter == Getter_Setter_Spieler.getId_laenge().get(j)) {
+
+								Verbindungsaufbau.nachricht_bufferedWriter = "Destroyed,["
+										+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
+
+								schiff_zerstört = true;
+
+								break_variable = true;
+
+								Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
+								break;
+
+							}
+
+						}
+
+						if (break_variable) {
+							break;
+						}
+
+					}
+
+					if (!schiff_zerstört) {
+						Verbindungsaufbau.nachricht_bufferedWriter = "Hit,[" + buchstaben[index_buchstaben] + "],["
+								+ koordinaten[1] + "]";
+
+						Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
+								.setBackground(Color.BLACK);
+
+						Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
+
+					}
+
+					// Miss
 				} else if (!(Getter_Setter_Spieler
 						.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1])).getText()
 						.contains("X"))) {
@@ -102,15 +146,12 @@ public class Thread_BufferedReader implements Runnable {
 					Getter_Setter_Gegner.setSchuss_setzen_erlaubt(true);
 
 				}
-				// TODO Destroyed
 
 				// Hit,[A],[0]
 			} else if (nachricht.contains("Hit")) {
 
 				char buchstabe = nachricht.charAt(5);
 				char zahl = nachricht.charAt(9);
-
-				System.out.println(buchstabe + " " + zahl);
 
 				koordinaten[0] = String.valueOf(buchstabe);
 				koordinaten[1] = String.valueOf(zahl);
@@ -135,8 +176,6 @@ public class Thread_BufferedReader implements Runnable {
 				char buchstabe = nachricht.charAt(6);
 				char zahl = nachricht.charAt(10);
 
-				System.out.println(buchstabe + " " + zahl);
-
 				koordinaten[0] = String.valueOf(buchstabe);
 				koordinaten[1] = String.valueOf(zahl);
 
@@ -154,17 +193,11 @@ public class Thread_BufferedReader implements Runnable {
 
 				Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
 
-			} else if (nachricht.contains("Destroyed")) {
-
-				Getter_Setter_Gegner.setSchuss_setzen_erlaubt(true);
-
-			// DestroyedLastShip,[A],[0]
+				// DestroyedLastShip,[A],[0]
 			} else if (nachricht.contains("DestroyedLastShip")) {
-				
+
 				char buchstabe = nachricht.charAt(19);
 				char zahl = nachricht.charAt(23);
-
-				System.out.println(buchstabe + " " + zahl);
 
 				koordinaten[0] = String.valueOf(buchstabe);
 				koordinaten[1] = String.valueOf(zahl);
@@ -180,11 +213,67 @@ public class Thread_BufferedReader implements Runnable {
 
 				Getter_Setter_Gegner.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
 						.setBackground(Color.BLACK);
-				
+
 				System.out.println("Spiel gewonnen");
 
+				// TODO JFrame öffnen: Gewonnen
 
-				//TODO JFrame öffnen: Gewonnen
+			}
+
+			// Destroyed,[A],[0]
+			else if (nachricht.contains("Destroyed")) {
+
+				char buchstabe = nachricht.charAt(6);
+				char zahl = nachricht.charAt(10);
+
+				koordinaten[0] = String.valueOf(buchstabe);
+				koordinaten[1] = String.valueOf(zahl);
+
+				int index_buchstaben = 0;
+
+				for (int i = 0; i <= 9; i++) {
+					if (koordinaten[0].equals(buchstaben[i])) {
+						index_buchstaben = i;
+						break;
+					}
+				}
+
+				String komplette_koordinaten = Integer.toString(index_buchstaben + zahl);
+
+				boolean schleife_beenden = false;
+
+				// TODO Alle ein X in weiß reinsetzen
+
+				for (int j = 0; j <= 10; j++) {
+
+					for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
+
+						if (Getter_Setter_Spieler.getId_koordinaten(j, k).equals(komplette_koordinaten)) {
+
+							for (int i = 0; i < Getter_Setter_Spieler.getId_laenge().get(j); i++) {
+
+								Getter_Setter_Spieler
+										.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
+										.setText("X");
+
+								Getter_Setter_Spieler
+								.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1])).setForeground(Color.WHITE);
+								
+								schleife_beenden = true;
+								
+							}
+
+							break;
+							
+						}
+
+					}
+					
+					if(schleife_beenden) {
+						break;
+					}
+
+				}
 
 			}
 

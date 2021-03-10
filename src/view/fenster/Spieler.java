@@ -223,6 +223,7 @@ public class Spieler {
 		// Hier werden alle 100 Buttons erstellt
 
 		JButton[][] button_A0_bis_J9 = new JButton[10][10];
+		Listener_Spieler.id = 0;
 
 		// z = Zahlen
 		for (int z = 1; z <= 10; z++) {

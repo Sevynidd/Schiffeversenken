@@ -1,5 +1,7 @@
 package controller.getter_setter.view;
 
+import java.util.HashMap;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -8,18 +10,23 @@ import javax.swing.JTextField;
 
 public class Getter_Setter_Spieler {
 
-	
 	private static JButton[][] button_A0_bis_J9_spieler = new JButton[10][10];
-	
+
 	private static JRadioButton[] RadioButton_Schiffe = new JRadioButton[4];
 	private static ButtonGroup gruppe_schiffe = new ButtonGroup();
 
 	private static JRadioButton[] RadioButton_Horizontal_Vertikal = new JRadioButton[2];
 	private static ButtonGroup gruppe_hor_vert = new ButtonGroup();
-	
+
 	private static JTextField[] TextField_Anzahl_Schiffe = new JTextField[4];
-	
+
 	private static JTextArea textArea_hinweis = new JTextArea();
+
+	private static HashMap<Integer, Integer> id_laenge = new HashMap<Integer, Integer>();
+
+	private static String[][] id_true_false = new String[10][5];
+
+	private static String[][] id_koordinaten = new String[10][5];
 
 	public static JButton getButton_A0_bis_J9(int b, int z) {
 		return button_A0_bis_J9_spieler[b][z];
@@ -81,6 +88,32 @@ public class Getter_Setter_Spieler {
 
 	public static void setTextField_hinweis(JTextArea textArea_hinweis) {
 		Getter_Setter_Spieler.textArea_hinweis = textArea_hinweis;
+	}
+
+	public static HashMap<Integer, Integer> getId_laenge() {
+		return id_laenge;
+	}
+
+	public static void setId_laenge(int id, int inhalt) {
+
+		Getter_Setter_Spieler.id_laenge.put(id, inhalt);
+
+	}
+
+	public static String getId_true_false(int id, int zahl) {
+		return id_true_false[id][zahl];
+	}
+
+	public static void setId_true_false(int id, int feld, boolean true_false) {
+		Getter_Setter_Spieler.id_true_false[id][feld] = String.valueOf(true_false);
+	}
+
+	public static String getId_koordinaten(int id, int zahl) {
+		return id_koordinaten[id][zahl];
+	}
+
+	public static void setId_koordinaten(int id, int feld, String id_koordinaten) {
+		Getter_Setter_Spieler.id_koordinaten[id][feld] = id_koordinaten;
 	}
 
 }
