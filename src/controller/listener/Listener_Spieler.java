@@ -267,9 +267,12 @@ public class Listener_Spieler {
 													Getter_Setter_Listener_Spieler.getZahl())
 											.setBackground(Color.decode("#98FB98"));
 
-									Getter_Setter_Spieler.setId_true_false(id, i, false);
+									Getter_Setter_Spieler.setId_true_false(id,
+											farbe_komplett - (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1,
+											false);
 
-									Getter_Setter_Spieler.setId_koordinaten(id, i,
+									Getter_Setter_Spieler.setId_koordinaten(id,
+											farbe_komplett - (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1,
 											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe()
 													+ Getter_Setter_Listener_Spieler.getZahl()));
 
@@ -399,9 +402,13 @@ public class Listener_Spieler {
 													farbe_komplett)
 											.setBackground(Color.decode("#98FB98"));
 
-									Getter_Setter_Spieler.setId_true_false(id, i, false);
+									
+									Getter_Setter_Spieler.setId_true_false(id,
+											-(farbe_komplett - (Getter_Setter_Listener_Spieler.getZahl())),
+											false);
 
-									Getter_Setter_Spieler.setId_koordinaten(id, i,
+									Getter_Setter_Spieler.setId_koordinaten(id,
+											-(farbe_komplett - (Getter_Setter_Listener_Spieler.getZahl())),
 											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe()
 													+ Getter_Setter_Listener_Spieler.getZahl()));
 								}

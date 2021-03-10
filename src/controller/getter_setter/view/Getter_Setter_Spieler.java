@@ -24,9 +24,9 @@ public class Getter_Setter_Spieler {
 
 	private static HashMap<Integer, Integer> id_laenge = new HashMap<Integer, Integer>();
 
-	private static String[][] id_true_false = new String[10][5];
+	private static String[][] id_true_false = new String[10][6];
 
-	private static String[][] id_koordinaten = new String[10][5];
+	private static String[][] id_koordinaten = new String[10][6];
 
 	public static JButton getButton_A0_bis_J9(int b, int z) {
 		return button_A0_bis_J9_spieler[b][z];
