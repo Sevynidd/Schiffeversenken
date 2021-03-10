@@ -32,9 +32,8 @@ public class Verbindungsaufbau {
 		// Hosten
 		if (Getter_Setter_Thread_empfangen.getBtnClicked(0) && !Getter_Setter_Thread_empfangen.getBtnClicked(1)) {
 
-			
 			try {
-				
+
 				socket_host = new ServerSocket(42069);
 
 				System.out.println("Warten auf einen Client am Port " + socket_host.getLocalPort() + "\n");
@@ -42,15 +41,16 @@ public class Verbindungsaufbau {
 				Socket client = socket_host.accept();
 
 				System.out.println("Client ist verbunden.");
-				
+
 				Getter_Setter_Gegner.setSchuss_setzen_erlaubt(true);
 
-				Thread_BufferedWriter thread = new Thread_BufferedWriter(client, null);
-				thread.start();
-				
-				Thread_BufferedReader tsbw = new Thread_BufferedReader(client,null);
-				Thread thread_writer = new Thread(tsbw);
-				thread_writer.start();
+				InputStream in_st = client.getInputStream();
+				InputStreamReader in_st_re = new InputStreamReader(in_st);
+				bufferedReader = new BufferedReader(in_st_re);
+
+				OutputStream os = client.getOutputStream();
+				OutputStreamWriter osw = new OutputStreamWriter(os);
+				bufferedWriter = new BufferedWriter(osw);
 				
 
 			} catch (UnknownHostException e) {
@@ -58,13 +58,15 @@ public class Verbindungsaufbau {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			threads_starten();
 
 			// Connecten
 		} else if (Getter_Setter_Thread_empfangen.getBtnClicked(1)
 				&& !Getter_Setter_Thread_empfangen.getBtnClicked(0)) {
 
 			try {
-				
+
 				socket_client = new Socket(Getter_Setter_Thread_empfangen.getConnectAdresse(), 42069);
 
 				InputStream in_st = socket_client.getInputStream();
@@ -81,19 +83,20 @@ public class Verbindungsaufbau {
 				e.printStackTrace();
 			}
 
-			
-			Thread_BufferedWriter thread = new Thread_BufferedWriter(null, bufferedWriter);
-			thread.start();
-			
-			Thread_BufferedReader tsbw = new Thread_BufferedReader(null, bufferedReader);
-			Thread thread_writer = new Thread(tsbw);
-			thread_writer.start();
+			threads_starten();
 
 		}
 
 	}
 
-	
+	private void threads_starten() {
+		
+		Thread_BufferedWriter thread = new Thread_BufferedWriter(bufferedWriter);
+		thread.start();
 
+		Thread_BufferedReader tsbw = new Thread_BufferedReader(bufferedReader);
+		Thread thread_writer = new Thread(tsbw);
+		thread_writer.start();
+	}
 
 }
