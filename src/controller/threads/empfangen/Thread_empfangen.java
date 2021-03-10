@@ -97,6 +97,7 @@ public class Thread_empfangen implements Runnable {
 
 			// Verhindern von "//"192.168.xxx.xxx
 			connect_addresse = andereAdresse.substring(1, andereAdresse.length());
+			Getter_Setter_Thread_empfangen.setConnectAdresse(connect_addresse);
 
 			String antwort_auf_anfrage = "SVAck";
 			Getter_Setter_Thread_empfangen.setAntwort_auf_anfrage(antwort_auf_anfrage);
@@ -124,6 +125,7 @@ public class Thread_empfangen implements Runnable {
 		if (message.contains("SVSearch,[1.0]") && !meine_ip.contains(andereAdresse) && connect_addresse_veränderbar) {
 
 			connect_addresse = andereAdresse.substring(1, andereAdresse.length());
+			Getter_Setter_Thread_empfangen.setConnectAdresse(connect_addresse);
 
 			connect_addresse_veränderbar = false;
 

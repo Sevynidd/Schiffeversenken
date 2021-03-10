@@ -12,6 +12,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.getter_setter.view.Getter_Setter_Gegner;
 import controller.getter_setter.view.Getter_Setter_Spieler_wird_gesucht;
 import controller.spielablauf.Verbindungsaufbau;
 import controller.threads.Thread_Spieler_wird_gesucht;
@@ -69,7 +70,10 @@ public class Spieler_wird_gesucht {
 						frame_spieler_wird_gesucht.setVisible(false);
 						frame_spieler_wird_gesucht.dispose();
 						
+						Getter_Setter_Gegner.setSpieler_suche_beendet(true);
+						
 						Verbindungsaufbau vab = new Verbindungsaufbau();
+						vab.thread_starten();
 						
 					}
 				});

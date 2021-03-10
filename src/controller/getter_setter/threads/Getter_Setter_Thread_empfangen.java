@@ -10,6 +10,7 @@ public class Getter_Setter_Thread_empfangen {
 	private static String antwort_auf_anfrage;
 	private static int senderPort;
 	private static InetAddress senderAdresse;
+	private static String connectAdresse;
 
 	public static Boolean getBtnClicked(int zahl) {
 		return btnClicked[zahl];
@@ -41,6 +42,14 @@ public class Getter_Setter_Thread_empfangen {
 
 	public static void setSenderAdresse(InetAddress senderAdresse) {
 		Getter_Setter_Thread_empfangen.senderAdresse = senderAdresse;
+	}
+
+	public static String getConnectAdresse() {
+		return connectAdresse;
+	}
+
+	public static void setConnectAdresse(String connectAdresse) {
+		Getter_Setter_Thread_empfangen.connectAdresse = connectAdresse;
 	}
 
 }
