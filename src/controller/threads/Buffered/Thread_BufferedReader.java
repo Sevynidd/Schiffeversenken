@@ -65,6 +65,7 @@ public class Thread_BufferedReader implements Runnable {
 				if (Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
 						.getText().contains("X")) {
 
+					Getter_Setter_Spieler.setId_true_false(index_buchstaben, Integer.parseInt(koordinaten[1]), true);
 					anzahl_an_schiffteilen -= 1;
 
 					if (anzahl_an_schiffteilen == 0) {
@@ -83,9 +84,11 @@ public class Thread_BufferedReader implements Runnable {
 					boolean break_variable = false;
 					boolean schiff_zerstört = false;
 					int counter = 0;
+										
 					
-					for (int j = 0; j <= 10; j++) {
+					for (int j = 0; j <= 9; j++) {
 
+						
 						for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
 
 							if (Getter_Setter_Spieler.getId_koordinaten(j, k).equals(komplette_koordinaten)) {
@@ -94,11 +97,12 @@ public class Thread_BufferedReader implements Runnable {
 
 							}
 
+							System.out.println(Getter_Setter_Spieler.getId_true_false(j, k));
 							if (Boolean.valueOf(Getter_Setter_Spieler.getId_true_false(j, k))) {
 								counter += 1;
 							}
 
-							if (j == 10 && k < Getter_Setter_Spieler.getId_laenge().get(j)
+							if (j == 9 && k < Getter_Setter_Spieler.getId_laenge().get(j)
 									&& counter == Getter_Setter_Spieler.getId_laenge().get(j)) {
 
 								Verbindungsaufbau.nachricht_bufferedWriter = "Destroyed,["
@@ -244,7 +248,7 @@ public class Thread_BufferedReader implements Runnable {
 
 				// TODO Alle ein X in weiß reinsetzen
 
-				for (int j = 0; j <= 10; j++) {
+				for (int j = 0; j <= 9; j++) {
 
 					for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
 
