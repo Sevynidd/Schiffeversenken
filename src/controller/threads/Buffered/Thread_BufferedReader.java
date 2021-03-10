@@ -83,8 +83,11 @@ public class Thread_BufferedReader implements Runnable {
 
 					boolean break_variable = false;
 					boolean schiff_zerstört = false;
-					int counter = 0;
-										
+					int[] counter = new int[10];
+					
+					for(int i = 0; i<= 9; i++) {
+						counter[i] = 0;
+					}
 					
 					for (int j = 0; j <= 9; j++) {
 
@@ -97,13 +100,13 @@ public class Thread_BufferedReader implements Runnable {
 
 							}
 
-							System.out.println(Getter_Setter_Spieler.getId_true_false(j, k));
+							//TODO Geht noch nicht
 							if (Boolean.valueOf(Getter_Setter_Spieler.getId_true_false(j, k))) {
-								counter += 1;
+								counter[j] += 1;
 							}
 
-							if (j == 9 && k < Getter_Setter_Spieler.getId_laenge().get(j)
-									&& counter == Getter_Setter_Spieler.getId_laenge().get(j)) {
+							if (j == 9 && k == (Getter_Setter_Spieler.getId_laenge().get(j) - 1)
+									&& counter[j] == Getter_Setter_Spieler.getId_laenge().get(j)) {
 
 								Verbindungsaufbau.nachricht_bufferedWriter = "Destroyed,["
 										+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";

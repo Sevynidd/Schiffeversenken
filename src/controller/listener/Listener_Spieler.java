@@ -270,6 +270,7 @@ public class Listener_Spieler {
 									Getter_Setter_Spieler.setId_true_false(id,
 											farbe_komplett - (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1,
 											false);
+									//TODO Error wenn mehrmals falsch geklickt
 
 									Getter_Setter_Spieler.setId_koordinaten(id,
 											farbe_komplett - (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1,
