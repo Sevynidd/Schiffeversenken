@@ -68,18 +68,16 @@ public class Thread_BufferedReader implements Runnable {
 					anzahl_an_schiffteilen -= 1;
 
 					if (anzahl_an_schiffteilen == 0) {
+						
+						Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
+						.setBackground(Color.BLACK);
+						
 						Verbindungsaufbau.nachricht_bufferedWriter = "DestroyedLastShip,["
 								+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
 
 						System.out.println("Spiel verloren");
 
-						try {
-							Thread.sleep(2000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-
-						System.exit(0);
+						//TODO JFrame öffnen: Verloren
 					}
 
 					Verbindungsaufbau.nachricht_bufferedWriter = "Hit,[" + buchstaben[index_buchstaben] + "],["
@@ -90,13 +88,13 @@ public class Thread_BufferedReader implements Runnable {
 
 					Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
 
-					// Miss
+				// Miss
 				} else if (!(Getter_Setter_Spieler
 						.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1])).getText()
 						.contains("X"))) {
 
-					Verbindungsaufbau.nachricht_bufferedWriter = "Miss," + buchstaben[index_buchstaben] + ","
-							+ koordinaten[1];
+					Verbindungsaufbau.nachricht_bufferedWriter = "Miss,[" + buchstaben[index_buchstaben] + "],["
+							+ koordinaten[1] + "]";
 
 					Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
 							.setBackground(Color.ORANGE);
@@ -160,16 +158,33 @@ public class Thread_BufferedReader implements Runnable {
 
 				Getter_Setter_Gegner.setSchuss_setzen_erlaubt(true);
 
+			// DestroyedLastShip,[A],[0]
 			} else if (nachricht.contains("DestroyedLastShip")) {
-				System.out.println("Spiel gewonnen");
+				
+				char buchstabe = nachricht.charAt(19);
+				char zahl = nachricht.charAt(23);
 
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				System.out.println(buchstabe + " " + zahl);
+
+				koordinaten[0] = String.valueOf(buchstabe);
+				koordinaten[1] = String.valueOf(zahl);
+
+				int index_buchstaben = 0;
+
+				for (int i = 0; i <= 9; i++) {
+					if (koordinaten[0].equals(buchstaben[i])) {
+						index_buchstaben = i;
+						break;
+					}
 				}
 
-				System.exit(0);
+				Getter_Setter_Gegner.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
+						.setBackground(Color.BLACK);
+				
+				System.out.println("Spiel gewonnen");
+
+
+				//TODO JFrame öffnen: Gewonnen
 
 			}
 
