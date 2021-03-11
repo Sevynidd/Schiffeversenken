@@ -270,13 +270,16 @@ public class Listener_Spieler {
 									Getter_Setter_Spieler.setId_true_false(id,
 											farbe_komplett - (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1,
 											false);
-									//TODO Error wenn mehrmals falsch geklickt
 
 									Getter_Setter_Spieler.setId_koordinaten(id,
 											farbe_komplett - (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1,
-											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe()) +
-													(farbe_komplett
-															- (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1)
+
+											(Integer.toString(
+													Getter_Setter_Listener_Spieler.getBuchstabe() + (farbe_komplett
+															- (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1))
+													+ Integer.toString(Getter_Setter_Listener_Spieler.getZahl())
+
+											)
 
 									);
 
@@ -291,6 +294,9 @@ public class Listener_Spieler {
 					Getter_Setter_Spieler.getTextField_hinweis()
 							.setText(Getter_Setter_Listener_Spieler.getNicht_platzierbar());
 					Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
+
+					id -= 1;
+
 					break;
 				}
 
@@ -310,10 +316,15 @@ public class Listener_Spieler {
 				Getter_Setter_Spieler.getTextField_hinweis()
 						.setText(Getter_Setter_Listener_Spieler.getKeine_schiffe_mehr());
 				Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
+
+				id -= 1;
+
 				break;
 			}
 
 		}
+
+		id += 1;
 
 		// Wenn es keine Schiffe mehr gibt:
 
@@ -323,8 +334,6 @@ public class Listener_Spieler {
 			window.frame_connecten_oder_hosten.setVisible(true);
 
 		}
-
-		id += 1;
 
 	}
 
@@ -406,16 +415,16 @@ public class Listener_Spieler {
 													farbe_komplett)
 											.setBackground(Color.decode("#98FB98"));
 
-									Getter_Setter_Spieler.setId_true_false(id,
-											-(farbe_komplett - (Getter_Setter_Listener_Spieler.getZahl())), false);
-
-									Getter_Setter_Spieler.setId_koordinaten(id,
-											-(farbe_komplett - (Getter_Setter_Listener_Spieler.getZahl())),
-											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe())
-													+ (farbe_komplett
-															- (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1)
-
-									);
+//									Getter_Setter_Spieler.setId_true_false(id,
+//											-(farbe_komplett - (Getter_Setter_Listener_Spieler.getZahl())), false);
+//
+//									Getter_Setter_Spieler.setId_koordinaten(id,
+//											-(farbe_komplett - (Getter_Setter_Listener_Spieler.getZahl())),
+//											Integer.toString(Getter_Setter_Listener_Spieler.getBuchstabe())
+//													+ (farbe_komplett
+//															- (Getter_Setter_Listener_Spieler.getBuchstabe() - 1) - 1)
+//
+//									);
 
 								}
 							}
@@ -428,6 +437,9 @@ public class Listener_Spieler {
 					Getter_Setter_Spieler.getTextField_hinweis()
 							.setText(Getter_Setter_Listener_Spieler.getNicht_platzierbar());
 					Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
+
+					id -= 1;
+
 					break;
 				}
 
@@ -447,10 +459,15 @@ public class Listener_Spieler {
 				Getter_Setter_Spieler.getTextField_hinweis()
 						.setText(Getter_Setter_Listener_Spieler.getKeine_schiffe_mehr());
 				Getter_Setter_Spieler.getTextField_hinweis().setBackground(Color.decode("#f08080"));
+
+				id -= 1;
+
 				break;
 			}
 
 		}
+
+		id += 1;
 
 		if (Getter_Setter_Listener_Spieler.getSchiff_anzahl_insgesamt() == 0) {
 
@@ -458,8 +475,6 @@ public class Listener_Spieler {
 			window.frame_connecten_oder_hosten.setVisible(true);
 
 		}
-
-		id += 1;
 	}
 
 }

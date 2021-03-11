@@ -15,8 +15,8 @@ import javax.swing.JTextArea;
 public class Hilfe_Menu {
 
 	private JFrame hilfe_fenster;
-	private int width = 780;
-	private int highth = 400;
+	private int width = 800;
+	private int highth = 500;
 
 	private BufferedImage horizontal;
 	private BufferedImage vertikal;
@@ -39,11 +39,14 @@ public class Hilfe_Menu {
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);
-		textArea.setBounds(150, 0, width - 6, highth - 29);
+		textArea.setBounds(150, 0, width - 150, highth - 29);
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textArea.setText("Schiffplatzierung: \n\n"
 				+ "Bei Horizontal wird immer das linke Ende des Schiffes mit dem Mausklick platziert \n\n\n\n\n\n\n"
-				+ "Bei Vertikal wird immer das untere Ende des Schiffes mit dem Mausklick platziert");
+				+ "Bei Vertikal wird immer das untere Ende des Schiffes mit dem Mausklick platziert \n\n\n\n\n\n\n"
+				+ "Ein orangenes Feld beim Gegner zeigt, dass daneben geschossen wurde \n\n" 
+				+ "Ein schwarzes Feld beim Gegner zeigt, dass getroffen wurde \n\n" 
+				+ "Wenn die schwarzen Kästchen ein weißes Kreuz enthalten, dann wurde das Schiff zerstört");
 		hilfe_fenster.getContentPane().add(textArea);
 
 		// Horizontal BufferedImage wird erstellt

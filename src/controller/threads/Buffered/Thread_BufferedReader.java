@@ -65,68 +65,68 @@ public class Thread_BufferedReader implements Runnable {
 				if (Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
 						.getText().contains("X")) {
 
-					Getter_Setter_Spieler.setId_true_false(index_buchstaben, Integer.parseInt(koordinaten[1]), true);
-					anzahl_an_schiffteilen -= 1;
-
-					if (anzahl_an_schiffteilen == 0) {
-
-						Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
-								.setBackground(Color.BLACK);
-
-						Verbindungsaufbau.nachricht_bufferedWriter = "DestroyedLastShip,["
-								+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
-
-						System.out.println("Spiel verloren");
-
-						// TODO JFrame öffnen: Verloren
-					}
-
-					boolean break_variable = false;
+//					Getter_Setter_Spieler.setId_true_false(index_buchstaben, Integer.parseInt(koordinaten[1]), true);
+//					anzahl_an_schiffteilen -= 1;
+//
+//					if (anzahl_an_schiffteilen == 0) {
+//
+//						Getter_Setter_Spieler.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
+//								.setBackground(Color.BLACK);
+//
+//						Verbindungsaufbau.nachricht_bufferedWriter = "DestroyedLastShip,["
+//								+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
+//
+//						System.out.println("Spiel verloren");
+//
+//						// TODO JFrame öffnen: Verloren
+//					}
+//
+//					boolean break_variable = false;
 					boolean schiff_zerstört = false;
-					int[] counter = new int[10];
-					
-					for(int i = 0; i<= 9; i++) {
-						counter[i] = 0;
-					}
-					
-					for (int j = 0; j <= 9; j++) {
-
-						
-						for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
-
-							if (Getter_Setter_Spieler.getId_koordinaten(j, k).equals(komplette_koordinaten)) {
-
-								Getter_Setter_Spieler.setId_true_false(j, k, true);
-
-							}
-
-							//TODO Geht noch nicht
-							if (Boolean.valueOf(Getter_Setter_Spieler.getId_true_false(j, k))) {
-								counter[j] += 1;
-							}
-
-							if (j == 9 && k == (Getter_Setter_Spieler.getId_laenge().get(j) - 1)
-									&& counter[j] == Getter_Setter_Spieler.getId_laenge().get(j)) {
-
-								Verbindungsaufbau.nachricht_bufferedWriter = "Destroyed,["
-										+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
-
-								schiff_zerstört = true;
-
-								break_variable = true;
-
-								Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
-								break;
-
-							}
-
-						}
-
-						if (break_variable) {
-							break;
-						}
-
-					}
+//					int[] counter = new int[10];
+//					
+//					for(int i = 0; i<= 9; i++) {
+//						counter[i] = 0;
+//					}
+//					
+//					for (int j = 0; j <= 9; j++) {
+//
+//						
+//						for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
+//
+//							if (Getter_Setter_Spieler.getId_koordinaten(j, k).equals(komplette_koordinaten)) {
+//
+//								Getter_Setter_Spieler.setId_true_false(j, k, true);
+//
+//							}
+//
+//							//TODO Geht noch nicht
+//							if (Boolean.valueOf(Getter_Setter_Spieler.getId_true_false(j, k))) {
+//								counter[j] += 1;
+//							}
+//
+//							if (j == 9 && k == (Getter_Setter_Spieler.getId_laenge().get(j) - 1)
+//									&& counter[j] == Getter_Setter_Spieler.getId_laenge().get(j)) {
+//
+//								Verbindungsaufbau.nachricht_bufferedWriter = "Destroyed,["
+//										+ buchstaben[index_buchstaben] + "],[" + koordinaten[1] + "]";
+//
+//								schiff_zerstört = true;
+//
+//								break_variable = true;
+//
+//								Getter_Setter_Gegner.setSchuss_setzen_erlaubt(false);
+//								break;
+//
+//							}
+//
+//						}
+//
+//						if (break_variable) {
+//							break;
+//						}
+//
+//					}
 
 					if (!schiff_zerstört) {
 						Verbindungsaufbau.nachricht_bufferedWriter = "Hit,[" + buchstaben[index_buchstaben] + "],["
@@ -230,57 +230,7 @@ public class Thread_BufferedReader implements Runnable {
 			// Destroyed,[A],[0]
 			else if (nachricht.contains("Destroyed")) {
 
-				char buchstabe = nachricht.charAt(6);
-				char zahl = nachricht.charAt(10);
-
-				koordinaten[0] = String.valueOf(buchstabe);
-				koordinaten[1] = String.valueOf(zahl);
-
-				int index_buchstaben = 0;
-
-				for (int i = 0; i <= 9; i++) {
-					if (koordinaten[0].equals(buchstaben[i])) {
-						index_buchstaben = i;
-						break;
-					}
-				}
-
-				String komplette_koordinaten = Integer.toString(index_buchstaben + zahl);
-
-				boolean schleife_beenden = false;
-
-				// TODO Alle ein X in weiß reinsetzen
-
-				for (int j = 0; j <= 9; j++) {
-
-					for (int k = 0; k < Getter_Setter_Spieler.getId_laenge().get(j); k++) {
-
-						if (Getter_Setter_Spieler.getId_koordinaten(j, k).equals(komplette_koordinaten)) {
-
-							for (int i = 0; i < Getter_Setter_Spieler.getId_laenge().get(j); i++) {
-
-								Getter_Setter_Spieler
-										.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
-										.setText("X");
-
-								Getter_Setter_Spieler
-								.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1])).setForeground(Color.WHITE);
-								
-								schleife_beenden = true;
-								
-							}
-
-							break;
-							
-						}
-
-					}
-					
-					if(schleife_beenden) {
-						break;
-					}
-
-				}
+				Getter_Setter_Gegner.setSchuss_setzen_erlaubt(true);
 
 			}
 
