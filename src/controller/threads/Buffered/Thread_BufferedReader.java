@@ -84,7 +84,7 @@ public class Thread_BufferedReader implements Runnable {
 
 						System.out.println("Spiel verloren");
 
-						Gewonnen_Verloren gv = new Gewonnen_Verloren("Verloren");
+						Gewonnen_Verloren gv = new Gewonnen_Verloren("Verloren", Color.decode("#f08080"));
 					}
 
 					boolean break_variable = false;
@@ -101,6 +101,8 @@ public class Thread_BufferedReader implements Runnable {
 								Getter_Setter_Spieler.setId_true_false(j, k, true);
 
 								counter[j] += 1;
+								
+								System.out.println(counter[j]);
 
 								if (counter[j] == Getter_Setter_Spieler.getId_laenge().get(j)) {
 
@@ -263,7 +265,7 @@ public class Thread_BufferedReader implements Runnable {
 				Getter_Setter_Gegner.getButton_A0_bis_J9(index_buchstaben, Integer.parseInt(koordinaten[1]))
 						.setBackground(Color.BLACK);
 
-				Gewonnen_Verloren gv = new Gewonnen_Verloren("Gewonnen");
+				Gewonnen_Verloren gv = new Gewonnen_Verloren("Gewonnen", Color.decode("#98FB98"));
 
 			}
 
@@ -303,6 +305,8 @@ public class Thread_BufferedReader implements Runnable {
 										String.valueOf(Getter_Setter_Spieler.getId_koordinaten(j, i).charAt(1)));
 
 								Getter_Setter_Gegner.getButton_A0_bis_J9(b, z).setText("X");
+								
+								Getter_Setter_Gegner.getButton_A0_bis_J9(b, z).setBackground(Color.BLACK);
 
 								Getter_Setter_Gegner.getButton_A0_bis_J9(b, z).setForeground(Color.WHITE);
 
@@ -313,8 +317,8 @@ public class Thread_BufferedReader implements Runnable {
 						}
 
 					}
-					
-					if(break_variable) {
+
+					if (break_variable) {
 						break;
 					}
 
