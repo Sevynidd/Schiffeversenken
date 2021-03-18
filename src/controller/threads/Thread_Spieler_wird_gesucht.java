@@ -4,6 +4,12 @@ import controller.getter_setter.view.Getter_Setter_Spieler_wird_gesucht;
 
 public class Thread_Spieler_wird_gesucht implements Runnable {
 
+	/*
+	 * Dieser Thread ist nur dafür da, um die Progressbar zu aktualisieren und das
+	 * solange, bis eine Variable geändert wird durch welche der Thread beendet
+	 * wird.
+	 */
+
 	private int value = 0;
 	private Getter_Setter_Spieler_wird_gesucht gsswg;
 
@@ -17,11 +23,10 @@ public class Thread_Spieler_wird_gesucht implements Runnable {
 
 		while (true) {
 			while (value <= 100) {
-				
-				value += 1;
-				
-				gsswg.getProgressBar().setValue(value);
 
+				value += 1;
+
+				gsswg.getProgressBar().setValue(value);
 
 				try {
 					Thread.sleep(25);

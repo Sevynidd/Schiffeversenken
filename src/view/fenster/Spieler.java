@@ -23,6 +23,10 @@ import controller.listener.Listener_Spieler;
 import view.hilfe.Hilfe_Menu;
 
 public class Spieler {
+	
+	/*
+	 * Die Spieler Seite des Spiels mit den Schiffen die man selbst platziert hat.
+	 */
 
 	public JFrame frame_spieler;
 

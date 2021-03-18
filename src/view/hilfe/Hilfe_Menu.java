@@ -14,6 +14,11 @@ import javax.swing.JTextArea;
 
 public class Hilfe_Menu {
 
+	/*
+	 * Das Hilfemenu kann man über die Menubar öffnen und sie zeigt einem hilfreiche
+	 * Info's zum Spiel an.
+	 */
+
 	private JFrame hilfe_fenster;
 	private int width = 820;
 	private int highth = 500;
@@ -44,8 +49,8 @@ public class Hilfe_Menu {
 		textArea.setText("Schiffplatzierung: \n\n"
 				+ "Bei Horizontal wird immer das linke Ende des Schiffes mit dem Mausklick platziert \n\n\n\n\n\n\n"
 				+ "Bei Vertikal wird immer das untere Ende des Schiffes mit dem Mausklick platziert \n\n\n\n\n\n\n"
-				+ "Ein orangenes Feld zeigt, dass daneben geschossen wurde \n\n" 
-				+ "Ein schwarzes Feld zeigt, dass getroffen wurde \n\n" 
+				+ "Ein orangenes Feld zeigt, dass daneben geschossen wurde \n\n"
+				+ "Ein schwarzes Feld zeigt, dass getroffen wurde \n\n"
 				+ "Wenn die schwarzen Kästchen ein weißes Kreuz enthalten, dann wurde das Schiff zerstört");
 		hilfe_fenster.getContentPane().add(textArea);
 

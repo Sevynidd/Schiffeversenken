@@ -10,6 +10,11 @@ import controller.spielablauf.Verbindungsaufbau;
 
 public class Listener_Gegner {
 
+	/*
+	 * Wenn man einen Button drückt um zu schießen und die Bedingungen erfüllt sind
+	 * dann wird "Fire" an den Gegner gesendet.
+	 */
+
 	private static String[] buchstaben = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
 	public static void buttonListener_spieler(JButton button_ausgewählt) {

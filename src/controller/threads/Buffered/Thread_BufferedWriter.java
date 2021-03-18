@@ -7,6 +7,11 @@ import controller.spielablauf.Verbindungsaufbau;
 
 public class Thread_BufferedWriter extends Thread {
 
+	/*
+	 * Hier wird jedesmal eine Variable verschickt, wenn die Nachricht nicht null
+	 * ist.
+	 */
+
 	private BufferedWriter bufferedWriter = null;
 
 	public Thread_BufferedWriter(BufferedWriter bufferedWriter) {

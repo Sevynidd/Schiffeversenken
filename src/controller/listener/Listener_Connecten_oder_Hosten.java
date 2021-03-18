@@ -16,7 +16,12 @@ import controller.threads.senden.Thread_senden;
 import view.spieler_wird_gesucht.Spieler_wird_gesucht;
 
 public class Listener_Connecten_oder_Hosten {
-	
+
+	/*
+	 * Listener für die Auswahl zwischen Hoster und Client. Je nachdem welches
+	 * gewählt wird, gibt es auch einen leicht anderen Verlauf des Programms.
+	 */
+
 	public static DatagramSocket socket;
 
 	public static void buttonListener_Connecten_oder_Hosten(JButton button_ausgewählt, JFrame frame) {
@@ -53,7 +58,7 @@ public class Listener_Connecten_oder_Hosten {
 				}
 
 				// Die Threads starten
-				
+
 				Thread_senden.getCommunicationSender()
 						.setDatagramSocket(Getter_Setter_Listener_Connecten_oder_Hosten.getSocket());
 

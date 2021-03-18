@@ -11,6 +11,10 @@ import controller.getter_setter.view.Getter_Setter_Spieler;
 import view.connecten_oder_hosten.Connecten_oder_Hosten;
 
 public class Listener_Spieler {
+	
+	/*
+	 * Der Listener ist für das platzieren der Schiffe da
+	 */
 
 	public static int id;
 

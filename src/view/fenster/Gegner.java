@@ -15,6 +15,11 @@ import controller.listener.Listener_Gegner;
 
 public class Gegner {
 
+	/*
+	 * Die Gegner Seite mit den Feldern auf welche man selbst schießen kann, um
+	 * Schiffe zu zerstören.
+	 */
+
 	public JFrame frame_gegner;
 
 	private String[] buchstaben = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };

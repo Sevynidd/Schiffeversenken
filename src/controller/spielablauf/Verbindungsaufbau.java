@@ -19,6 +19,14 @@ import controller.threads.Buffered.Thread_BufferedWriter;
 
 public class Verbindungsaufbau {
 
+	/*
+	 * Der alte DatagramSocket wird geschlossen (UDP) und der neue Socket wird
+	 * geöffnet (TCP - Socket oder ServerSocket).
+	 * 
+	 * Dazugehörige BufferedReader/Writer werden erstellt und neue Threads für die
+	 * Kommunikation geöffnet.
+	 */
+
 	private Socket socket_client;
 	private ServerSocket socket_host;
 	public static volatile String nachricht_bufferedWriter = null;
@@ -51,14 +59,13 @@ public class Verbindungsaufbau {
 				OutputStream os = client.getOutputStream();
 				OutputStreamWriter osw = new OutputStreamWriter(os);
 				bufferedWriter = new BufferedWriter(osw);
-				
 
 			} catch (UnknownHostException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			threads_starten();
 
 			// Connecten
@@ -90,7 +97,7 @@ public class Verbindungsaufbau {
 	}
 
 	private void threads_starten() {
-		
+
 		Thread_BufferedWriter thread = new Thread_BufferedWriter(bufferedWriter);
 		thread.start();
 

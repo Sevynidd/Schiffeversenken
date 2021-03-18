@@ -8,6 +8,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class Gewonnen_Verloren {
+	
+	/*
+	 * JFrame der am Ende des Spiels sich öffnet und anzeigt ob man gewonnen oder verloren hat
+	 */
 
 	private JFrame frmDankeFrsSpielen;
 	private String status;

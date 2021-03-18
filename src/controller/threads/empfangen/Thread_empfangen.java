@@ -14,6 +14,13 @@ import controller.threads.senden.Thread_senden;
 
 public class Thread_empfangen implements Runnable {
 
+	/*
+	 * Alles was an Nachrichten reinkommt wird auch dementsprechend verarbeitet.
+	 * Wenn die Kommunikation durch ist, dann wird im nächsten Schritt der
+	 * DatagramSocket (UDP) geschlossen und ein Socket mit ServerSocket geöffnet
+	 * (TCP).
+	 */
+
 	private DatagramSocket datagramSocket;
 
 	// Die Adresse desjenigen, welcher mir ein SVFound geschickt hat

@@ -11,6 +11,11 @@ import view.Gewonnen_Verloren;
 
 public class Thread_BufferedReader implements Runnable {
 
+	/*
+	 * Dieser Thread reagiert auf alles was man von den Gegner rein bekommmt.
+	 * Fire, Miss, Destroyed, DestroyedLastShip
+	 */
+
 	private BufferedReader bufferedReader;
 	private String[] buchstaben = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
@@ -101,8 +106,6 @@ public class Thread_BufferedReader implements Runnable {
 								Getter_Setter_Spieler.setId_true_false(j, k, true);
 
 								counter[j] += 1;
-								
-								System.out.println(counter[j]);
 
 								if (counter[j] == Getter_Setter_Spieler.getId_laenge().get(j)) {
 
@@ -305,7 +308,7 @@ public class Thread_BufferedReader implements Runnable {
 										String.valueOf(Getter_Setter_Spieler.getId_koordinaten(j, i).charAt(1)));
 
 								Getter_Setter_Gegner.getButton_A0_bis_J9(b, z).setText("X");
-								
+
 								Getter_Setter_Gegner.getButton_A0_bis_J9(b, z).setBackground(Color.BLACK);
 
 								Getter_Setter_Gegner.getButton_A0_bis_J9(b, z).setForeground(Color.WHITE);
